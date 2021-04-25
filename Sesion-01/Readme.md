@@ -291,8 +291,8 @@ puede usar en números con notación científica.
 ```javascript
 var a = 12;	// Entero
 var b = 32.43;	// Decimal
-var c = 2.25e+6;	// Equivalente a 2.25x10^6 o 2250000
-var d = 2.25e-6;	// Equivalente a 2.25x10-6 o 0.00000225
+var c = 2.25e+6;  // Equivalente a 2.25x10^6 o 2250000
+var d = 2.25e-6;  // Equivalente a 2.25x10-6 o 0.00000225
 ```
 
 Este tipo de dato incluye algunos valores especiales: `Infinity`, `-Infinity` y `NaN`.
