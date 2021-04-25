@@ -18,6 +18,8 @@ Analizar la trayectoria de JavaScript, evaluar por qué es una buena opción apr
 
 - **[¿Qué son las variables?](#qué-son-las-variables)**
 
+- **[`let` y `const`](#let-y-const)**
+
 - **[Tipos de Datos](#tipos-de-datos)**
 
 - **[Operador typeof](#operador-typeof)**
@@ -100,14 +102,15 @@ JavaScript es:
 
 Las variables se utilizan para almacenar información dentro de tu programa para ser manipulados.
 
-En el modo más general, te ayudan a **etiquetar datos**. Los llamaremos en el momento que los necesitemos a lo largo del programa.
+En el modo más general, te ayudan a **etiquetar datos**. Los llamaremos en el momento que los necesitemos a lo largo del
+programa.
 
-![Variables](https://i.imgur.com/toMeYM2.png)
+![Variables](assets/variables.png)
 
 Las variables se dividen en 4 partes:
 
 ```javascript
-var deporte = "Atletismo";
+var name = "John Doe";
 ```
 
 - **Declaración (`var`)**. Cuando comienzas una variable, debes de utilizar la palabra `var`
@@ -119,29 +122,23 @@ var deporte = "Atletismo";
 
 Ahora bien, nombrar tus variables implica que deberán ser lo más descriptivas posibles.
 
-Es decir, que si otras personas leyeran tu código, entenderían rápidamente que significa cada dato porque el nombre de su variable lo explica todo. (Fig 1.1)
-
-**`Fig. 1.1`**
+Es decir, que si otras personas leyeran tu código, entenderían rápidamente que significa cada dato porque el nombre de
+su variable lo explica todo.
 
 ```javascript
-var saludo = "Hola Mundo";
-var perro = "Firulais";
-var pais = "México";
-var edad = 35;
+var name = "John Doe";
+var country = "Mexico";
+var age = 35;
 ```
 
 Si tú lees el nombre de las variables anteriores, rápidamente comprendes de qué tratan.
 
-Si generas una variable que implica dos palabras, te recomendamos usar una técnica llamada **"Camel Case"**. (Fig 1.2)
-
-Observemos un ejemplo:
-
-**`Fig. 1.2`**
+Si generas una variable que implica dos palabras, te recomendamos usar una técnica llamada **"Camel Case"**.
 
 ```javascript
-var paisLatinoamericano = "México";
-var animalVerde = "Rana";
-var impuestosAnuales = 250000;
+var firstName = "John";
+var lastName = "Doe";
+var fullName = "John Doe";
 ```
 
 **"Camel Case"** implica:
@@ -150,7 +147,56 @@ var impuestosAnuales = 250000;
 - La palabra comenzará con minúscula.
 - La segunda palabra empezará con mayúscula.
 
-Con esto claro, hablemos de los **tipos de datos**.
+---
+
+## `let` y `const`
+
+En JavaScript todas las variables son inicializadas con `undefined` al momento de su creación.
+
+```javascript
+console.log(name); // undefined
+
+var name = "John Doe";
+```
+
+Esta es otra diferencia entre `let` y `var`. Si se trata de acceder a una variable con `let` antes de ser declarada
+obtenemos un `ReferenceError` en lugar de `undefined`.
+
+```javascript
+console.log(name); // ReferenceError: name is not defined
+
+let name = "John Doe";
+```
+
+`const` es muy similar a `let`, la única diferencia es que una vez asignado un valor a una variable ya no se puede
+reasignar.
+
+```javascript
+let name = 'John Doe';
+const email = 'john@doe.com';
+
+name = 'Jane Doe';
+email = 'jane@doe.com'; // TypeError: Assignment to constant variable.
+```
+
+Algo muy importante es que declarar una variable con `const` no significa que esta sea inmutable, simplemente no se
+puede reasignar.
+
+```javascript
+const person = {
+  name: 'John Doe'
+};
+
+person.name = 'Jane Doe';
+
+person = {}; // TypeError: Assignment to constant variable.
+```
+
+Declarar un objeto con `const` no significa que no podamos cambiar sus propiedades, lo que no podemos hacer es
+asignarle un nuevo valor.
+
+Como regla general puedes usar `const` por defecto y usar `let` solo cuando sea necesario, esto evita la fatiga mental
+de pensar cuándo usar una opción o la otra.
 
 ---
 
