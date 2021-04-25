@@ -115,10 +115,9 @@ var name = "John Doe";
 
 - **Declaración (`var`)**. Cuando comienzas una variable, debes de utilizar la palabra `var`
 - **Nombre (etiqueta)**. Irá del lado izquierdo. Será cómo llamarás la variable más adelante.
-- **Asignación (`=`)**. A diferencia de la aritmética donde se le conoce como "igual", en Javascript se le conoce como asignación, el cual asignará el valor de lo que el área de su lado derecho genere hacia el lado izquierdo (Nombre).
+- **Asignación (`=`)**. A diferencia de la aritmética donde se le conoce como "igual", en Javascript se le conoce como
+  asignación, el cual asignará el valor de lo que el área de su lado derecho genere hacia el lado izquierdo (Nombre).
 - **Valor (Tipo de dato)**. Puede ser un texto, un número, un conjunto de datos (objetos, arreglos).
-
----
 
 Ahora bien, nombrar tus variables implica que deberán ser lo más descriptivas posibles.
 
@@ -192,8 +191,8 @@ person.name = 'Jane Doe';
 person = {}; // TypeError: Assignment to constant variable.
 ```
 
-Declarar un objeto con `const` no significa que no podamos cambiar sus propiedades, lo que no podemos hacer es
-asignarle un nuevo valor.
+Declarar un objeto con `const` no significa que no podamos cambiar sus propiedades, lo que no podemos hacer es asignarle
+un nuevo valor.
 
 Como regla general puedes usar `const` por defecto y usar `let` solo cuando sea necesario, esto evita la fatiga mental
 de pensar cuándo usar una opción o la otra.
@@ -202,9 +201,9 @@ de pensar cuándo usar una opción o la otra.
 
 ## Tipos de Datos
 
-Todos los lenguajes de programación cuentan con estructuras de datos las cuales varían de un lenguaje a otro.
-JavaScript es un lenguaje de tipado débil, significa que no es necesario declarar el tipo de variable antes de
-usarla. El tipo de dato es determinado automáticamente cuando el programa esté siendo procesado.
+Todos los lenguajes de programación cuentan con estructuras de datos las cuales varían de un lenguaje a otro. JavaScript
+es un lenguaje de tipado débil, significa que no es necesario declarar el tipo de variable antes de usarla. El tipo de
+dato es determinado automáticamente cuando el programa esté siendo procesado.
 
 JavaScript cuenta con seis tipos de datos que pueden ser divididos en tres categorías:
 
@@ -227,14 +226,16 @@ JavaScript cuenta con seis tipos de datos que pueden ser divididos en tres categ
 
 ### String
 
-Este tipo de dato es utilizado para almacenar cadenas de texto. Los strings son creados con comillas dobles o sencillas alrededor de uno o más caracteres.
+Este tipo de dato es utilizado para almacenar cadenas de texto. Los strings son creados con comillas dobles o sencillas
+alrededor de uno o más caracteres.
 
 ```javascript
 var a = 'Hello World!';	// Comillas sencillas
 var b = "Hello World!";	// Comillas dobles
 ```
 
-Las comillas también pueden formar parte de la cadena de texto siempre y cuando no coincidan con las comillas que abren y cierran el string.
+Las comillas también pueden formar parte de la cadena de texto siempre y cuando no coincidan con las comillas que abren
+y cierran el string.
 
 ```javascript
 var a = "Let's learn JavaScript.";	// Comilla sencilla dentro de comillas dobles
@@ -242,9 +243,50 @@ var b = 'He said "Hello" and left.';	// Comillas dobles dentro de comillas senci
 var c = 'We\'ll never stop learning.';	// Escapando comilla sencilla con backslash
 ```
 
+Si queremos agregar el valor de una variable a una cadena de texto debemos concatenar ambos con el signo `+` y siempre
+tener cuidado de agregar espacios en blanco para que no salgan ambos textos juntos.
+
+```javascript
+const name = 'John Doe';
+
+console.log("Welcome " + name); // Welcome John Doe
+```
+
+Una alternativa a esta concatenación es el uso de _template strings_ que son cadenas de texto que permiten la
+interpolación mediante expresiones. La sintaxis consta de dos partes, la primera es delimitar la cadena de texto con el
+uso de backticks. La segunda parte es usar el signo de dólar y llaves para indicar un placeholder o expresión a evaluar.
+
+```javascript
+const name = 'John Doe';
+
+console.log(`Welcome ${ name }`); // Welcome John Doe
+```
+
+Estas plantillas hacen más fácil crear cadenas de string con múltiples líneas.
+
+```javascript
+const message = `Welcome Back!
+John Doe
+`;
+
+console.log( message ); 
+// Welcome Back!
+// John Doe
+```
+
+Además de variables también podemos usar expresiones matemáticas.
+
+```javascript
+const a = 10;
+const b = 20;
+
+console.log(`a + b = ${a + b}`); // a + b = 30 
+```
+
 ### Number
 
-El tipo de dato Number se usa para representar números enteros positivos o negativos con o sin punto decimal, incluso se puede usar en números con notación científica.
+El tipo de dato Number se usa para representar números enteros positivos o negativos con o sin punto decimal, incluso se
+puede usar en números con notación científica.
 
 ```javascript
 var a = 12;	// Entero
@@ -255,7 +297,8 @@ var d = 2.25e-6;	// Equivalente a 2.25x10-6 o 0.00000225
 
 Este tipo de dato incluye algunos valores especiales: `Infinity`, `-Infinity` y `NaN`.
 
-`Infinity` representa el infinito matemático `∞`, el cual es mayor a cualquier otro número. Se obtiene al dividir un número mayor o menor a cero entre cero.
+`Infinity` representa el infinito matemático `∞`, el cual es mayor a cualquier otro número. Se obtiene al dividir un
+número mayor o menor a cero entre cero.
 
 ```javascript
 console.log(7 / 0);	// Infinity
@@ -272,7 +315,8 @@ console.log(Math.sqrt(-1)); // NaN
 
 ### Boolean
 
-Las variables que contengan este tipo de dato sólo pueden almacenar uno de dos valores: `true` o `false`. Normalmente se usan para representar estados que signifiquen sí (`true`) o no (`false`), encendido (`true`) o apagado (`false`), etc.
+Las variables que contengan este tipo de dato sólo pueden almacenar uno de dos valores: `true` o `false`. Normalmente se
+usan para representar estados que signifiquen sí (`true`) o no (`false`), encendido (`true`) o apagado (`false`), etc.
 
 ```javascript
 var isUserActive = true;	// Sí, el usuario se encuentra activo
@@ -281,7 +325,7 @@ var isUserAdmin = false;	// No, el usuario no es admin
 
 ### Undefined
 
-Cuando una variable es declarada pero no se le ha asignado un valor, por default su valor es `undefined`.
+Cuando una variable es declarada, pero no se le ha asignado un valor, por default su valor es `undefined`.
 
 ```javascript
 var a;
@@ -293,7 +337,8 @@ console.log(b);	// Hello World
 
 ### Null
 
-Este es otro tipo de dato especial con un único valor posible: `null`. Cuando encontremos `null` significa que no hay valor. No es lo mismo que cero o `undefined`, simplemente es `null` o nada.
+Este es otro tipo de dato especial con un único valor posible: `null`. Cuando encontremos `null` significa que no hay
+valor. No es lo mismo que cero o `undefined`, simplemente es `null` o nada.
 
 Se puede vaciar una variable de manera explícita asignando el valor `null`.
 
