@@ -14,11 +14,7 @@ Analizar la trayectoria de JavaScript, evaluar por qué es una buena opción apr
 
 - **[¿Por qué Javascript?](#por-qué-javascript)**
 
-- **[¿Cómo comenzar y qué hacer?](#cómo-comenzar-y-qué-hacer)**
-
 - **[¿Qué es Javascript?](#qué-es-javascript)**
-
-- **[Tu primer archivo Javascript](#tu-primer-archivo-javascript)**
 
 - **[¿Qué son las variables?](#qué-son-las-variables)**
 
@@ -42,93 +38,63 @@ Analizar la trayectoria de JavaScript, evaluar por qué es una buena opción apr
 
 ---
 
-## ¿Por qué Javascript?
+## ¿Por qué JavasScript?
 
-Te damos la gran bienvenida a Javascript.
+### Una de las tecnologías más populares
 
-Javascript hoy es uno de los lenguajes de programación más usados en el mundo.
+Por octavo año consecutivo, JavaScript se ha mantenido como el lenguaje de programación más usado entre desarrolladores.
+Esto de acuerdo a la encuesta realizada por [Stack Overflow](https://stackoverflow.com/) el 2020 a casi 65.000
+desarrolladores en todo el mundo.
 
-En la última encuesta de 2019, realizada a la plataforma [Stack Overflow](https://stackoverflow.com/), foro más importante de desarrolladores en el mundo, se comprobó que Javascript es y seguirá teniendo mucha tracción en los siguientes años.
+> [Aquí puedes consultar la investigación completa](https://insights.stackoverflow.com/survey/2020).
 
-**No es el único que seguirá creciendo**, claro está, pero el impacto de este se ha mantenido y progresa anualmente.
+![Most Popular Technologies](assets/most-popular-technologies.png)
 
-> Te recomendamos leer la investigación completa [sobre el ecosistema tecnológico aquí](https://insights.stackoverflow.com/survey/2019).
+### JavaScript en el Front
 
-![Survey 2019](https://i.imgur.com/ZZmILsS.png)
+Frontend es la parte de un programa, dispositivo o aplicación a la que el usuario final puede acceder directamente. Son
+todas las tecnologías de diseño y desarrollo web que corren en el navegador y que se encargan de la interactividad con
+los usuarios.
 
----
+![Front End Frameworks](assets/front-end.png)
 
-Atentos de estas tendencias, muchas empresas confían sus productos digitales a Javascript, parcial o totalmente, en diferentes áreas de desarrollo.
+### JavaScript en el Back
 
-Notemos que es posible, con Javascript, trabajar aplicaciones móviles y escritorio.
+Backend por el contrario, es la capa de acceso a datos de un software a la cual los usuarios no tienen acceso
+directamente. Aquí se encuentran los servidores y bases de datos, esta parte se encarga de enviar los datos hacia el
+Front conforme el usuario los requiera.
 
-![tendencias](https://i.imgur.com/nlzlvO0.png)
+![Back End Frameworks](assets/back-end.png)
 
----
+### Grandes compañías usando JavaScript
 
-Ahora, el conjunto de tecnologías que necesitarás para construir aplicaciones web puede ser este (importante destacar que no es el único pero es de los más robustos):
+JavaScript se encuentra en todos lados, siendo el lenguaje que predomina en la web. Es usado por grandes compañías
+tecnológicas, algunas hacen fuerte uso de Node como Netflix o Uber, otras son responsables de partes muy importantes del
+ecosistema de JavaScript como Google que se encarga de mantener Angular, o Facebook que está detrás de React.
 
-![](https://i.imgur.com/UgG62hG.png)
-
-Observa que:
-
-- Del lado del cliente tenemos React, un framework **basado en Javascript** que te permite organizar, mantener y gestionar una aplicación basado en un concepto llamado componentes.
-
-> Destacar que React cuenta con un soporte sólido por parte de la comunidad de desarrolladores y también de Facebook, como compañía. De ahí su seguridad y confianza.
-
-- En el lado del servidor tenemos Node.js, el cual es un ambiente de desarrollo que permite el uso de Javascript del lado del servidor. Este te permitirá conectar con el cliente y con la base de datos, siendo un escudo de seguridad para ambas partes.
-
-- Finalmente, encontramos MongoDB, una base de datos no relacional, el cual es muy amigable y al trabajar con él para su manejo, verás que se parecerá mucho al lenguaje de Javascript.
-
-## ¿Cómo comenzar y qué hacer?
-
-Para poder utilizar todas las tecnologías mencionadas y crear aplicaciones robustas, deberás formar buenas bases en Javascript.
-
-A pesar de que es un lenguaje el cual podrás aplicar en poco tiempo, practicar es la clave.
-
-Te compartimos consejos para mantenerte enfocado y persistente:
-
-- Al inicio, probablemente muchos conceptos no tengan mucho sentido o implique mucho trabajo comprenderlos. **Es normal.** Sólo es cuestión de ejercitar lógica con muchos ejercicios y retos, los cuales la gran mayoría te los iremos compartiendo a lo largo del módulo.
-
-- No tengas miedo en pedir ayuda o asumir que no sabes. Las personas que se dedican o implican tecnología en sus carreras profesionales saben que para crecer más rápido deben de aceptar que no lo saben todo. **Acercarse a otras personas alrededor cuando hay obstáculos hará más fácil tu progreso.**
-
-- Encuentra espacios de estudio. Programar puede parecer diferente a otra área profesional debido a que necesitas momentos donde debes compartir, debatir y hablar sobre tus conclusiones técnicas, pero también te servirá mucho encontrar lugares, tiempos, momentos, donde puedas concentrarte, enfocarte y teclear mucho.
-
-- Se vale Googlear. Probablemente llegues a estancarte y pasar una o dos horas en algunas líneas de código. Ten la confianza de ir a Google y buscar la respuesta. Encontrarás muchos desarrolladores que han pasado por ese mismo momento y han compartido cómo lo resolvieron. **Buscar ayuda en Internet es normal.**
-
-> Cabe aclarar, "copiar y pegar" código **no es una buena práctica**. Es importante que todo el código que tú coloques en tu proyecto lo entiendas. Sepas por qué está ahí. Esto hará que tu aplicación pueda seguir creciendo y sigas teniendo, junto con tu equipo, el control del mismo.
-
-Ahora si, comencemos.
+![Companies](assets/companies.jpg)
 
 ---
 
 ## ¿Qué es Javascript?
 
-Javascript (JS) es:
+JavaScript es:
 
-1. Un lenguaje de programación que permite ejecutarse principalmente en cada navegador (Google Chrome, Safari, Firefox, Opera, etc.).
-
-2. Multiplataforma. Puede ser utilizado en muchas plataformas y sistemas. Podemos usarlo fuera del navegador a través de ciertos programas adicionales.
-
-3. Multiparadigma. Se puede manejar orientación a objetos, funcional, reactivo. Más adelante explicaremos como se utilizan y para qué nos sirven.
-
-4. **Diferente a JAVA. Son diferentes lenguajes. Javascript no es JAVA**
-
-5. Un jugador que hace equipo, en el navegador, a lado de HTML y CSS, para que el usuario pueda usar la aplicación.
-
-   1. HTML maneja el contenido, la estructura, el esqueleto, el "markup".
-   2. CSS maneja la presentación, el diseño, la visualización de la aplicación.
-   3. JS maneja la interactividad, efectos, dinamismo y más adelante, la gestión de datos y el flujo de los mismos a otras áreas de la aplicación.
+- Un lenguaje de programación que permite ejecutarse principalmente en cada navegador (Google Chrome, Safari, Firefox,
+  Opera, etc.).
+- Multiplataforma. También puede ser usado fuera del navegador.
+- Multiparadigma. Si bien se define como un lenguaje orientado a objetos es lo suficientemente flexible como para
+  implementar principios de programación funcional e incluso programación reactiva.
+- **Javascript no es Java. Son lenguajes completamente diferentes**
+- Uno de los tres pilares de un sitio web:
+    - HTML maneja el contenido, la estructura, el esqueleto, el "markup".
+    - CSS maneja la presentación, el diseño, la visualización de la aplicación.
+    - JS maneja la interactividad, efectos, dinamismo y más adelante, la gestión de datos y el flujo de los mismos a
+      otras áreas de la aplicación.
 
 ![Variables](https://i.imgur.com/yNwZN3I.png)
 
 ---
-
-## Tu primer archivo Javascript
-
-- En tu computadora, crearás una carpeta llamada `bedu-sesion-1`. Aquí colocaremos todos nuestros ejercicios siguientes.
-
-- Abrirás tu editor de preferencia y darás click en "Open Folder" en la parte posterior de la ventana. Buscarás la carpeta, la seleccionarás y la abrirás.
 
 ## ¿Qué son las variables?
 
