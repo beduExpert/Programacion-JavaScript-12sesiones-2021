@@ -12,9 +12,9 @@ Analizar la trayectoria de JavaScript, evaluar por qué es una buena opción apr
 
 ## Tabla de Contenidos
 
-- **[¿Por qué Javascript?](#por-qué-javascript)**
+- **[¿Por qué JavaScript?](#por-qué-javascript)**
 
-- **[¿Qué es Javascript?](#qué-es-javascript)**
+- **[¿Qué es JavaScript?](#qué-es-javascript)**
 
 - **[¿Qué son las variables?](#qué-son-las-variables)**
 
@@ -38,7 +38,7 @@ Analizar la trayectoria de JavaScript, evaluar por qué es una buena opción apr
 
 ---
 
-## ¿Por qué JavasScript?
+## ¿Por qué JavaScript?
 
 ### Una de las tecnologías más populares
 
