@@ -114,7 +114,7 @@ La sintaxis se compone de la siguiente forma:
 if ( /* Condición a evaluar */ ) {
   // Código a ejecutar si la condición retorna true
 } else {
-	// Código a ejecutar si la condición retorna false
+  // Código a ejecutar si la condición retorna false
 }
 ```
 
@@ -136,14 +136,14 @@ múltiples condicionales `if`/`else`.
 
 ```javascript
 switch ( /* Expresión a evaluar*/ ) {
-	case a:
-		/* Código a ejecutar */
-		break;
-	case b:
-		/* Código a ejecutar */
-		break;
-	default:
-		/* Código a ejecutar por default */
+  case a:
+    /* Código a ejecutar */
+    break;
+  case b:
+    /* Código a ejecutar */
+    break;
+  default:
+    /* Código a ejecutar por default */
 }
 ```
 
@@ -174,9 +174,9 @@ const speed = 120
 let message
 
 if(speed > 100) {
-	message = "You're going too fast!"
+  message = "You're going too fast!"
 } else {
-	message = "Under the limit"
+  message = "Under the limit"
 }
 
 console.log(message)	// You're going too fast!
@@ -241,10 +241,10 @@ Esto es muy útil a la hora de usar condicionales pues podemos evaluar un solo v
 
 ```javascript
 if(value) {
-	// value es truthy
+  // value es truthy
 } else {
-	// value es falsy
-	// puede ser false, 0, '', null, undefined o NaN
+  // value es falsy
+  // puede ser false, 0, '', null, undefined o NaN
 }
 ```
 
@@ -269,7 +269,7 @@ La sintaxis funciona de esta manera:
 
 ```javascript
 for(let i = 0; i<=50; i++){
-    // Código a ejecutar en cada ciclo
+  // Código a ejecutar en cada ciclo
 }
 ```
 
@@ -285,7 +285,7 @@ Otro ciclo es `while`, el cual se repite siempre y cuando la condición especifi
 
 ```javascript
 while(condición) {
-	// Código a ejecutar en cada ciclo
+  // Código a ejecutar en cada ciclo
 }
 ```
 
@@ -295,8 +295,8 @@ El ejemplo 2 podría hacerse con `while` de la siguiente manera:
 let i = 0;
 
 while(i <= 200) {
-	console.log("Hello World");
-	i++;
+  console.log("Hello World");
+  i++;
 }
 ```
 
@@ -310,7 +310,7 @@ salir de un bucle.
 ```javascript
 for (let i = 0; i < 10; i++) {
   if (i === 3) break
-	console.log(`Number: ${i}`)
+  console.log(`Number: ${i}`)
 }
 ```
 
@@ -320,7 +320,7 @@ bucle, solo se brinca una iteración y continúa con el ciclo.
 ```javascript
 for (let i = 0; i < 10; i++) {
   if (i === 3) continue
-	console.log(`Number: ${i}`)
+  console.log(`Number: ${i}`)
 }
 ```
 
