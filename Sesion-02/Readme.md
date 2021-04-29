@@ -309,8 +309,8 @@ salir de un bucle.
 
 ```javascript
 for (let i = 0; i < 10; i++) {
-  if (i === 3) break
-  console.log(`Number: ${i}`)
+	if (i === 3) break;
+	console.log(`Number: ${i}`)
 }
 ```
 
@@ -319,8 +319,8 @@ bucle, solo se brinca una iteración y continúa con el ciclo.
 
 ```javascript
 for (let i = 0; i < 10; i++) {
-  if (i === 3) continue
-  console.log(`Number: ${i}`)
+	if (i === 3) continue;
+	console.log(`Number: ${i}`)
 }
 ```
 
