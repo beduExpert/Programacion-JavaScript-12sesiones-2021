@@ -20,16 +20,16 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 </html>
 ```
 
-Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-2.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
-
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-2.js` que es donde se trabajarán los ejemplos de esta
+sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
 
 #### Desarrollo
 
 Vamos a dar un saludo adecuado dependiendo de la hora.
 
 ```javascript
-var time = 13;
-var greeting;
+const time = 13;
+let greeting;
 
 if (time < 12) {
   greeting = "Good morning";
@@ -51,8 +51,8 @@ console.log(greeting) // Good afternoon
 En lugar de tener distintos bloques con la condicional `if`, podemos concatenarlos todos con `else if`.
 
 ```javascript
-var time = 13;
-var greeting;
+const time = 13;
+let greeting;
 
 if (time < 12) {
   greeting = "Good morning";

@@ -20,13 +20,12 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 </html>
 ```
 
-Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-2.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
-
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-2.js` que es donde se trabajarán los ejemplos de esta
+sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
 
 #### Desarrollo
 
 Pensemos que queremos repetir un texto 5 veces y que aparezca en consola:
-
 
 ```javascript
 console.log("Hello World");
@@ -38,12 +37,13 @@ console.log("Hello World");
 
 Excelente, funcionará y se reflejarán en la consola.
 
-Ahora bien, si te dijera que queremos repetirlo 200 veces, entonces copiar y pegar cada línea se volvería ineficiente (aparte de odiar al que te dio la instrucción).
+Ahora bien, si te dijera que queremos repetirlo 200 veces, entonces copiar y pegar cada línea se volvería ineficiente (
+aparte de odiar al que te dio la instrucción).
 
 ¿Qué podemos hacer?
 
 ```javascript
-for(var i = 0; i<=200; i++){
+for(let i = 0; i<=200; i++){
   console.log("Hello World");
 }
 ```

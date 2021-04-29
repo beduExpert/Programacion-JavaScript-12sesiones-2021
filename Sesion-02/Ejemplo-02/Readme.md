@@ -20,16 +20,16 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 </html>
 ```
 
-Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-2.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
-
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-2.js` que es donde se trabajarán los ejemplos de esta
+sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
 
 #### Desarrollo
 
-Vamos a calcular el día de la semana dependiendode su valor númerico empezando en cero.
+Vamos a calcular el día de la semana dependiendo de su valor numérico empezando en cero.
 
 ```javascript
-var day = 2;
-var text;
+const day = 2;
+let text;
 
 switch (day) {
   case 0:
