@@ -189,9 +189,9 @@ De igual forma se puede cambiar el valor de las propiedades de los objetos.
 
 ```javascript
 const john = {
-	firstName: 'John',
-	lastName: 'Doe',
-	birthYear: 1990
+  firstName: 'John',
+  lastName: 'Doe',
+  birthYear: 1990
 }
 
 console.log(john.firstName)  // 'John'
@@ -422,4 +422,4 @@ las variables, el valor de esas propiedades es el que se asigna a las variables 
 
 #### [Ejemplo 3: Object destructuring](./Ejemplo-03/Readme.md)
 
-#### [Reto 3: Objetos anidados](./Reto-02/Readme.md)
+#### [Reto 3: Objetos anidados](./Reto-03/Readme.md)

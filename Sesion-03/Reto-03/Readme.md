@@ -2,7 +2,7 @@
 
 ---
 
-## Reto 3: Extraer una lista de propiedades
+## Reto 3: Objetos anidados
 
 ### Objetivos
 
