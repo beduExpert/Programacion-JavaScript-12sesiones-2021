@@ -1,6 +1,6 @@
-[`Programación con JavaScript`](../Readme.md) > `Sesión 04`
+[`Programación con JavaScript`](../Readme.md) > `Sesión 03`
 
-# Sesión 4: Objetos y Arreglos
+# Sesión 3: Objetos y Arreglos
 
 ## Objetivos
 
@@ -32,7 +32,8 @@ Mostrar las principales características de los objetos y arreglos, así como la
 
 ## Arreglos
 
-Ya hemos trabajado con distintos tipos de datos como string, number y boolean. Muchas veces necesitamos representar una colección de variables, en lugar de crear múltples variables podemos utilizar arreglos.
+Ya hemos trabajado con distintos tipos de datos como string, number y boolean. Muchas veces necesitamos representar una
+colección de variables, en lugar de crear múltiples variables podemos utilizar arreglos.
 
 ```javascript
 const color1 = 'Red';
@@ -44,7 +45,8 @@ console.log(color2);	// Blue
 console.log(color3);	// Green
 ```
 
-En lugar de crear tres variables distintas podemos crear un arreglo usando corchetes `[]` y separando cada elemento del arreglo con comas.
+En lugar de crear tres variables distintas podemos crear un arreglo usando corchetes `[]` y separando cada elemento del
+arreglo con comas.
 
 ```javascript
 const colors = ['Red', 'Blue', 'Green'];
@@ -52,7 +54,8 @@ const colors = ['Red', 'Blue', 'Green'];
 console.log(colors);	// ['Red', 'Blue', 'Green']
 ```
 
-Todo elemento de un arreglo tiene un identificador numérico que representa su posición en el arreglo. A esto se le conoce como `index` y se empieza a contar desde cero.
+Todo elemento de un arreglo tiene un identificador numérico que representa su posición en el arreglo. A esto se le
+conoce como `index` y se empieza a contar desde cero.
 
 ![array](assets/array.png)
 
@@ -90,6 +93,56 @@ console.log(colors.length);	// 3
 ```
 
 #### [Ejemplo 1: Arreglos](./Ejemplo-01)
+
+Una variación del ciclo `for` que hemos visto hasta ahora es el ciclo `for...of` que nos permite ejecutar un bloque de
+código para cada elemento de un objeto iterable como es el caso de los arreglos. Retomemos el código final
+del [ejemplo 1](./Ejemplo-01). 
+
+```javascript
+const numbers = [1, 3, 4, 7, 2, 1, 9, 0]
+
+const doubled = []
+
+for(let i = 0; i < numbers.length; i++) {
+  doubled.push(numbers[i] * 2);
+}
+
+console.log(numbers); // [1, 3, 4, 7, 2, 1, 9, 0]
+console.log(doubled);  // [2, 6, 8, 14, 4, 2, 18, 0]
+```
+
+Ahora podemos reescribir el ciclo usando `for...of`.
+
+```javascript
+const numbers = [1, 3, 4, 7, 2, 1, 9, 0]
+
+const doubled = []
+
+for(const number of numbers) {
+  doubled.push(number * 2);
+}
+
+console.log(numbers)  // [1, 3, 4, 7, 2, 1, 9, 0]
+console.log(doubled)  // [2, 6, 8, 14, 4, 2, 18, 0]
+```
+
+Para este ciclo se crea una variable en cada iteración que corresponde al elemento del arreglo. Es decir, `number` es
+una variable creada en esa iteración cuyo valor es el equivalente a `numbers[i]`. Cuando usamos `for...of` también
+podemos manipular las iteraciones con `break` y `continue` como lo vimos anteriormente.
+
+```javascript
+const numbers = [1, 3, 4, 7, 2, 1, 9, 0]
+
+const doubled = []
+
+for(const number of numbers) {
+  if (number === 1) continue
+  doubled.push(number * 2);
+}
+
+console.log(numbers)  // [1, 3, 4, 7, 2, 1, 9, 0]
+console.log(doubled)  // [6, 8, 14, 4, 18, 0]
+```
 
 #### [Reto 1: Calcular promedio](./Reto-01)
 

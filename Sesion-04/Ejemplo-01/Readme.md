@@ -1,4 +1,4 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 04`](../Readme.md) > `Ejemplo 01`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 03`](../Readme.md) > `Ejemplo 01`
 
 ---
 
@@ -15,59 +15,51 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 ```html
 <html>
   <head>
-    <script type="text/javascript" src="./ejemplos-sesion-4.js"></script>
+    <script type="text/javascript" src="./ejemplos-sesion-3.js"></script>
   </head>
 </html>
 ```
 
-Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-4.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
-
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-4.js` que es donde se trabajarán los ejemplos de esta
+sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados
 
 #### Desarrollo
 
-Vamos a crear una función que reciba como argumento un arreglo con _n_ cantidad de enteros, dicha función debe retornar un nuevo arreglo con todos los elementos del primer arreglo multiplicados por dos.
+Vamos a empezar con un arreglo de enteros llamado `numbers` y otro arreglo `doubled`, este segundo arreglo será
+inicializado vacío. Nuestro objetivo será llenar `doubled` con todos los números que se encuentren en `numbers`
+multiplicados por dos.
 
 ```javascript
-[1, 3, 4, 7, 2, 1, 9, 0]  // Arreglo inicial
+const numbers = [1, 3, 4, 7, 2, 1, 9, 0]
 
-[2, 6, 8, 14, 4, 2, 18, 0]  // Resultado esperado
+const doubled = []
 ```
 
-Una forma de resolverlo es recorriendo cada elemento del arreglo con un ciclo `for`, multiplicando el número por dos y guardándalo en un nuevo arreglo para retornarlo al final.
+Vamos a recorrer cada elemento del arreglo `numbers` con un ciclo `for`, multiplicando el número por dos y lo
+agregaremos al arreglo vacío.
 
 ```javascript
-function multiplyByTwo(numbers) {
-    var multipliedNumbers = [];
-
-    for(var i = 0; i < numbers.length; i++) {
-      multipliedNumbers.push(numbers[i] * 2);
-    }
-
-    return multipliedNumbers;
+for(let i = 0; i < numbers.length; i++) {
+  doubled.push(numbers[i] * 2)
 }
 ```
 
-> El método `push()` agrega un nuevo elemento al final de un arreglo.
+> El método `push()` agrega un nuevo elemento al final de un arreglo. Contrario al método `pop()` que elimina el último
+> elemento del arreglo cambiando su longitud.
 
 Como estamos comparando que `i < numbers.length` el ciclo va a terminar con el último elemento del arreglo.
 
 ```javascript
-function multiplyByTwo(numbers) {
-    var multipliedNumbers = [];
+const numbers = [1, 3, 4, 7, 2, 1, 9, 0]
 
-    for(var i = 0; i < numbers.length; i++) {
-      multipliedNumbers.push(numbers[i] * 2);
-    }
+const doubled = []
 
-    return multipliedNumbers;
+for(let i = 0; i < numbers.length; i++) {
+  doubled.push(numbers[i] * 2)
 }
 
-var input = [1, 3, 4, 7, 2, 1, 9, 0];
-
-var output = multiplyByTwo(input);
-
-console.log(input); // [1, 3, 4, 7, 2, 1, 9, 0]
-console.log(output);  // [2, 6, 8, 14, 4, 2, 18, 0]
+console.log(numbers)  // [1, 3, 4, 7, 2, 1, 9, 0]
+console.log(doubled)  // [2, 6, 8, 14, 4, 2, 18, 0]
 ```
 
-![multiplyByTwo](./assets/multiplyByTwo.png)
+![multiplyByTwo](./assets/doubleNumbers.png)
