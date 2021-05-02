@@ -388,8 +388,6 @@ console.log(yellow); // Yellow
 En este ejemplo estamos creando 3 variables (`red`, `blue` y `yellow`) y asignando los valores del arreglo `colors`.
 Esta asignación se hace basándose en el index del arreglo.
 
-#### [Reto 1: Intercambiar variables](./Reto-01/Readme.md)
-
 ```javascript
 const person = {
   firstName: 'John',
