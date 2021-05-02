@@ -1,4 +1,4 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 03`](../Readme.md) > `Ejemplo 02`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 04`](../Readme.md) > `Ejemplo 02`
 
 ---
 
@@ -15,17 +15,18 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 ```html
 <html>
   <head>
-    <script type="text/javascript" src="./ejemplos-sesion-3.js"></script>
+    <script type="text/javascript" src="./ejemplos-sesion-4.js"></script>
   </head>
 </html>
 ```
 
-Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-3.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
-
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-4.js` que es donde se trabajarán los ejemplos de esta
+sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
 
 #### Desarrollo
 
-Ya vimos cómo en las declaraciones de funciones comenzamos con `function` después el nombre y los argumentos de la función dentro de paréntesis.
+Ya vimos cómo en las declaraciones de funciones comenzamos con `function` después el nombre y los argumentos de la
+función dentro de paréntesis.
 
 ```javascript
 function whatDoYouDo(job, name) {
@@ -36,7 +37,7 @@ function whatDoYouDo(job, name) {
 La sintaxis cambia un poco en una expresión de función.
 
 ```javascript
-var whatDoYouDo = function(job, name) {
+const whatDoYouDo = function(job, name) {
   switch (job) {
     case 'developer':
       return name + ' develops cool apps.';
@@ -51,6 +52,7 @@ console.log(whatDoYouDo('developer', 'John Doe'));
 console.log(whatDoYouDo('designer', 'Jane Doe'));
 console.log(whatDoYouDo('retired', 'Mark Doe'));
 ```
+
 > No es necesario incluir `break` en cada caso del `switch` porque `return` finaliza la función, el siguiente código no es ejecutado.
 
 ![whatDoYouDo](./assets/whatDoYouDo.png)

@@ -1,4 +1,4 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 03`](../Readme.md) > `Reto 02`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 04`](../Readme.md) > `Reto 02`
 
 ---
 
@@ -21,17 +21,3 @@ function getLergerInt(number1, number2) {
   ...
 }
 ```
-
-<details>
-  <summary>Solución</summary>
-
-```javascript
-function getLergerInt(number1, number2) {
-  if(number1 > number2) {
-    return number1
-  } else {
-    return number2
-  }
-}
-```
-</details>

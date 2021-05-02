@@ -1,7 +1,7 @@
 
-[`Programación con JavaScript`](../Readme.md) > `Sesión 03`
+[`Programación con JavaScript`](../Readme.md) > `Sesión 04`
 
-# Sesión 3: Funciones
+# Sesión 4: Funciones
 
 ## Objetivos
 
@@ -24,6 +24,14 @@ Dividir el trabajo que realiza un programa mediante tareas más pequeñas aislad
 - **[Expresión de función ejecutada inmediatamente](#expresión-de-función-ejecutada-inmediatamente)**
 
 	- [Ejemplo 3: IIFE](./Ejemplo-03)
+
+- **[Arrow functions](#arrow-functions)**
+	
+	- [Sintaxis](#sintaxis)
+		
+	- [Paréntesis](#paréntesis)
+	
+	- [Return Implícito](#return-implícito)
 
 	- [Reto 2: Número mayor](./Reto-02)
 
@@ -122,16 +130,103 @@ const firstNames = [ 'John', 'Jane', 'Mark'];
 function getFullNames(names) {
   const fullNames = []
 	
-  for(let i = 0; i < names.length; i++) {
-    fullNames.p
-	}
+  for(const name of names) {
+    fullNames.push(`${name} Doe`)
+  }
+  
+  return fullNames
 }
-const fullNames = firstNames.map(function(name) {
-  return `${name} Doe`;
-});
+
+const fullNames = getFullNames(firstNames)
 
 console.log(fullNames); // ["John Doe", "Jane Doe", "Mark Doe"]
 ```
+
+Ahora veamos cómo podemos sobreescribir esta función para usar arrow functions.
+
+### Sintaxis
+
+Lo primero que debemos tomar en cuenta es que las arrow functions son funciones anónimas. Significa que el primer paso
+es usar una expresión de función.
+
+```javascript
+const firstNames = [ 'John', 'Jane', 'Mark'];
+
+const getFullNames = function(names) {
+  const fullNames = []
+	
+  for(const name of names) {
+    fullNames.push(`${name} Doe`)
+  }
+  
+  return fullNames
+}
+
+const fullNames = getFullNames(firstNames)
+
+console.log(fullNames); // ["John Doe", "Jane Doe", "Mark Doe"]
+```
+
+Ahora bien, para escribir un arrow function solo debemos quitar el keyword `function` y agregar lo que se conoce como _
+fat arrow_ (`=>`) justo después de los paréntesis que contienen los parámetros de la función.
+
+```javascript
+const firstNames = [ 'John', 'Jane', 'Mark'];
+
+const getFullNames = (names) => {
+  const fullNames = []
+	
+  for(const name of names) {
+    fullNames.push(`${name} Doe`)
+  }
+  
+  return fullNames
+}
+
+const fullNames = getFullNames(firstNames)
+
+console.log(fullNames); // ["John Doe", "Jane Doe", "Mark Doe"]
+```
+
+### Paréntesis
+
+Adicionalmente, cuando contamos con un único parámetro los paréntesis pueden ser eliminados.
+
+```javascript
+const firstNames = [ 'John', 'Jane', 'Mark'];
+
+const getFullNames = names => {
+  const fullNames = []
+	
+  for(const name of names) {
+    fullNames.push(`${name} Doe`)
+  }
+  
+  return fullNames
+}
+
+const fullNames = getFullNames(firstNames)
+
+console.log(fullNames); // ["John Doe", "Jane Doe", "Mark Doe"]
+```
+
+Eliminar los paréntesis es opcional. Algunos [Style Guides](https://github.com/airbnb/javascript#arrows--one-arg-parens)
+sugieren no hacerlo por claridad y consistencia en el código.
+
+### Return implícito
+
+Cuando escribimos `return` estamos definiendo explícitamente lo que debe retornar la función. Muchas veces las funciones
+solo retornan un valor sin hacer alguna otra operación antes. Cuando este es el caso podemos omitir el `return` pues el
+arrow function asume que se va a retornar lo que sigue después del fat arrow.
+
+```javascript
+const logName = (name) => console.log(`Hello ${name}!`);
+
+logName('John Doe'); // Hello John Doe!
+```
+
+De esta manera podemos eliminar las llaves, ya que estas definen un bloque de líneas, y eliminar también el
+keyword `return`
 
 #### [Reto 2: Número mayor](./Reto-02)
 
