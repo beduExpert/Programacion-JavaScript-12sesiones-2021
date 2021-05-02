@@ -1,8 +1,8 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 04`](../Readme.md) > `Reto 03`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 03`](../Readme.md) > `Reto 03`
 
 ---
 
-## Reto 3: Extraer una lista de propiedades
+## Reto 3: Fibonacci
 
 ### Objetivos
 
@@ -10,46 +10,48 @@ Implementar adecuadamente los conceptos vistos hasta el momento de funciones y c
 
 #### Requisitos
 
-`N/A`
+Haber terminado el [reto 2](../Reto-02).
 
 #### Desarrollo
 
-Completar la función `pluck` que extrae una lista de propiedades de un arreglo de objetos.
+En la serie de Fibonacci:
+
+`1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...`
+
+Cada elemento se obtiene sumando los dos valores anteriores.
+
+Completar la función `fibonacciSequence` la cuál recibe `limit`, un entero positivo que representa la cantidad de elementos de la serie que queremos.
 
 ```javascript
-var singers = [
-  { name: 'Steven Tyler', band: 'Aerosmith', born: 1948 },
-  { name: 'Karen Carpenter', band: 'The Carpenters', born: 1950 },
-  { name: 'Kurt Cobain', band: 'Nirvana', born: 1967 },
-  { name: 'Chris Cornell', band: 'Soundgarden', born: 1964 },
-];
-
-function pluck(list, propertyName) {
+function fibonacciSequence(limit) {
   ...
 }
+```
 
-console.log( pluck(singers, 'name') );
-// ["Steven Tyler", "Karen Carpenter", "Kurt Cobain", "Chris Cornell"]
+La función debe mostrar en consola los elementos de la serie hasta que `limit` sea alcanzado.
 
-console.log( pluck(singers, 'band') );
-// ["Aerosmith", "The Carpenters", "Nirvana", "Soundgarden"]
-
-console.log( pluck(singers, 'born') );
-// [1948, 1950, 1967, 1964]
+```javascript
+fibonacciSequence(1); // 1
+fibonacciSequence(2); // 1, 1
+fibonacciSequence(5); // 1, 1, 2, 3, 5
 ```
 
 <details>
   <summary>Solución</summary>
 
 ```javascript
-function pluck(list, propertyName) {
-  var values = [];
+function fibonacci(num) {
+  if (num <= 1) return 1;
 
-  for (var i = 0; i < list.length; i++) {
-    values.push( list[i][propertyName] );
+  return fibonacci(num - 1) + fibonacci(num - 2);
+}
+
+function fibonacciSequence(limit) {
+  if(limit < 1) return console.log('Limit must be greater than 0');
+
+  for(var i = 0; i < limit; i++ ) {
+    console.log( fibonacci(i) );
   }
-
-  return values;
 }
 ```
 </details>

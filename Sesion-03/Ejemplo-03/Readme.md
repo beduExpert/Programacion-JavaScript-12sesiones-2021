@@ -1,12 +1,12 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 03`](../Readme.md) > `Ejemplo 03`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 03`](../Readme.md) > `Ejemplo 02`
 
 ---
 
-## Ejemplo 3: IIFE
+## Ejemplo 3: Object Destructuring
 
 ### Objetivo
 
-Evaluar otra forma de utilizar expresiones de función al ejecutarlas inmediatamente.
+Extraer propiedades de un objeto mediante asignación por destructuring.
 
 #### Requisitos
 
@@ -20,44 +20,51 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 </html>
 ```
 
-Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-3.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
-
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-4.js` que es donde se trabajarán los ejemplos de esta
+sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
 
 #### Desarrollo
 
-Supongamos que tenemos una función que muestra en consola un nombre cualquiera.
+Si la propiedad que queremos extraer no existe en el objeto se retorna `undefined`. Podemos usar asignar un valor por
+default en caso de no encontrar la propiedad que buscamos. Para esto debemos asignar (`=`) un valor dentro de las llaves.
 
 ```javascript
-function logName() {
-  var name = "John Doe";
-  console.log(name);
-}
+const person = {
+  firstName: 'John',
+  lastName: 'Doe'
+};
 
-logName(); // John Doe
+const { firstName, country = 'Unknown' } = person;
+
+console.log(firstName, country); // John Unknown
 ```
 
-![logName](./assets/logName.png)
-
-Para convertir esta función en una IIFE debemos envolver toda la función en paréntesis, eso lo hace una expresión, posteriormente usamos `()` para ejecutar la función justo después de ser definida.
+En ocasiones no queremos usar el mismo nombre de la propiedad del objeto, por ejemplo cuando estamos consumiendo
+información de un recurso externo o de una base de datos. Usando `:` podemos renombrar una variable.
 
 ```javascript
-(function() {
-  var name = "John Doe";
-  console.log(name);
-})();
+const person = {
+  firstName: 'John',
+  lastName: 'Doe'
+};
+
+const { firstName: name } = person;
+
+console.log(name); // John 
 ```
 
-![IIFE](./assets/IIFE.png)
-
-Como ya fue ejecutada y es anónima, no hay forma de que podamos volver a llamar la función de nuevo.
-
-También se pueden pasar argumentos a este tipo de funciones, de la misma forma que lo hacemos con las funciones normales.
+La asignación de un valor default y el cambio de nombre de la variable se pueden mezclar para casos de usos un poco más
+complejos.
 
 ```javascript
-(function(lastName) {
-  var firstName = "John";
-  console.log(firstName + ' ' + lastName);
-})('Doe');
+const person = {
+  firstName: 'John',
+  lastName: 'Doe'
+};
+
+const { firstName: name,  country: ctry = 'Unknown'} = person;
+
+console.log(name, ctry); // John Unknown
 ```
 
-![IIFE With Arguments](./assets/IIFE-args.png)
+![Object Destructuring](./assets/destructuring.png)

@@ -1,8 +1,8 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 04`](../Readme.md) > `Reto 01`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 03`](../Readme.md) > `Reto 01`
 
 ---
 
-## Reto 1: Calcular promedio
+## Reto 1: Potenciación
 
 ### Objetivos
 
@@ -14,28 +14,35 @@ Implementar adecuadamente los conceptos vistos hasta el momento de funciones y c
 
 #### Desarrollo
 
-Completar la función `calculateAverage` la cual recibe `numbers`, un arreglo de _n_ cantidad de enteros. La función debe retornar el promedio de todos los enteros que tenga `numbers`.
+Crear una función `power` que recibe dos argumentos `base` y `exponent`. La función debe retornar el resultado de elevar `base` a la potencia `exponent`.
 
 ```javascript
-function calculateAverage(numbers) {
+function power(base, exponent) {
   ...
 }
 ```
 
-> Para calcular el promedio se divide la suma de todos los elementos entre el número total de elementos.
+Recuerda que en la potenciación el `exponent` indica cuántas veces se debe multiplicar `base` por sí mismo.
+
+```javascript
+3 ^ 3 = 3 * 3 * 3
+3 ^ 3 = 27
+```
+
+> Evitar usar el operador de exponenciación `**`
 
 <details>
   <summary>Solución</summary>
 
 ```javascript
-function calculateAverage(numbers) {
-  var sum = 0;
+function power(base, exponent) {
+  var result = 1;
 
-  for (var i = 0; i < numbers.length; i++) {
-    sum += numbers[i]; // Same as: sum = sum + numbers[i];
+  for(var i = 0; i < exponent; i++) {
+    result *= base; // Same as: result = result * base;
   }
 
-  return sum / numbers.length
+  return result;
 }
 ```
 </details>

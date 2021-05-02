@@ -1,12 +1,12 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 04`](../Readme.md) > `Ejemplo 02`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 03`](../Readme.md) > `Ejemplo 02`
 
 ---
 
-## Ejemplo 2: Transformando objetos en arreglos
+## Ejemplo 2: Expresión de Función
 
 ### Objetivo
 
-Distinguir la sintaxis y correcta implementación de los arreglos en JavaScript.
+Analizar la diferencia entre declaración de función y expresión de función.
 
 #### Requisitos
 
@@ -15,66 +15,42 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 ```html
 <html>
   <head>
-    <script type="text/javascript" src="./ejemplos-sesion-4.js"></script>
+    <script type="text/javascript" src="./ejemplos-sesion-3.js"></script>
   </head>
 </html>
 ```
 
-Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-4.js` que es donde
-se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html`
-en Chrome e inspecciona la consola para ver los resultados.
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-3.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
 
 
 #### Desarrollo
 
-Vamos a crear una función que convierta un objeto en un arreglo con los pares
-`[key, value]` por cada propiedad.
+Ya vimos cómo en las declaraciones de funciones comenzamos con `function` después el nombre y los argumentos de la función dentro de paréntesis.
 
 ```javascript
-var car = {
-  brand: 'Nissan',
-  model: 'Versa',
-  year: 2020
-}
-
-[['brand', 'Nissan'], ['model', 'Versa'], ['year', 2020]]  // Resultado esperado
-```
-
-Para resolver este ejercicio haremos uso del método [`Object.keys()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) el cual retorna un arreglo con el nombre de las propiedades de un objeto.
-
-```javascript
-var obj = {
-  a: 'some string',
-  b: 42,
-  c: false
-};
-
-console.log( Object.keys(obj) );  // ['a', 'b', 'c']
-```
-
-Después usaremos un ciclo para ir recorriendo todas las propiedades del objeto e ir obteniendo sus respectivos valores.
-
-```javascript
-function keyValuePairs(obj) {
-    var keys = Object.keys(obj);
-    var pairs = [];
-
-    for(var i = 0; i < keys.length; i++) {
-      pairs.push( [keys[i], obj[keys[i]]] )
-    }
-
-    return pairs;
+function whatDoYouDo(job, name) {
+  ...
 }
 ```
 
-> El método `push()` agrega un nuevo elemento al final de un arreglo.
+La sintaxis cambia un poco en una expresión de función.
 
 ```javascript
-var result = keyValuePairs(car);
+var whatDoYouDo = function(job, name) {
+  switch (job) {
+    case 'developer':
+      return name + ' develops cool apps.';
+    case 'designer':
+      return name + ' designs awesome websites.';
+    default:
+      return name + ' does something else.'
+  }
+}
 
-console.log(result);
-
-// [['brand', 'Nissan'], ['model', 'Versa'], ['year', 2020]]
+console.log(whatDoYouDo('developer', 'John Doe'));
+console.log(whatDoYouDo('designer', 'Jane Doe'));
+console.log(whatDoYouDo('retired', 'Mark Doe'));
 ```
+> No es necesario incluir `break` en cada caso del `switch` porque `return` finaliza la función, el siguiente código no es ejecutado.
 
-![keyValuePairs](./assets/keyValuePairs.png)
+![whatDoYouDo](./assets/whatDoYouDo.png)

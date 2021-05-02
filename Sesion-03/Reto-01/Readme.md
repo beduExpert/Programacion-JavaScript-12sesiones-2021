@@ -1,12 +1,12 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 03`](../Readme.md) > `Reto 01`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 04`](../Readme.md) > `Reto 01`
 
 ---
 
-## Reto 1: Potenciación
+## Reto 1: Calcular promedio
 
 ### Objetivos
 
-Implementar adecuadamente los conceptos vistos hasta el momento de funciones y ciclos para solucionar un problema.
+Implementar adecuadamente los conceptos vistos hasta el momento sobre ciclos y arreglos para solucionar un problema.
 
 #### Requisitos
 
@@ -14,35 +14,11 @@ Implementar adecuadamente los conceptos vistos hasta el momento de funciones y c
 
 #### Desarrollo
 
-Crear una función `power` que recibe dos argumentos `base` y `exponent`. La función debe retornar el resultado de elevar `base` a la potencia `exponent`.
+Dado el arreglo `numbers` compuesto solamente por números enteros mayores que cero, obtener el promedio de todos sus
+elementos.
 
 ```javascript
-function power(base, exponent) {
-  ...
-}
+const numbers = [5, 3, 4, 7, 2, 1, 9, 7, 7]
 ```
 
-Recuerda que en la potenciación el `exponent` indica cuántas veces se debe multiplicar `base` por sí mismo.
-
-```javascript
-3 ^ 3 = 3 * 3 * 3
-3 ^ 3 = 27
-```
-
-> Evitar usar el operador de exponenciación `**`
-
-<details>
-  <summary>Solución</summary>
-
-```javascript
-function power(base, exponent) {
-  var result = 1;
-
-  for(var i = 0; i < exponent; i++) {
-    result *= base; // Same as: result = result * base;
-  }
-
-  return result;
-}
-```
-</details>
+> Para calcular el promedio se divide la suma de todos los elementos entre el número total de elementos.

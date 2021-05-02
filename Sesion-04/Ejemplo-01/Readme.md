@@ -2,11 +2,11 @@
 
 ---
 
-## Ejemplo 1: Arreglos
+## Ejemplo 1: Funciones
 
 ### Objetivo
 
-Distinguir la sintaxis y correcta implementación de los arreglos en JavaScript.
+Distinguir la sintaxis de las funciones y su correcta implementación.
 
 #### Requisitos
 
@@ -20,46 +20,56 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 </html>
 ```
 
-Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-4.js` que es donde se trabajarán los ejemplos de esta
-sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-3.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
+
 
 #### Desarrollo
 
-Vamos a empezar con un arreglo de enteros llamado `numbers` y otro arreglo `doubled`, este segundo arreglo será
-inicializado vacío. Nuestro objetivo será llenar `doubled` con todos los números que se encuentren en `numbers`
-multiplicados por dos.
+Vamos a dar calcular la edad mediante una función que reciba el año de nacimiento.
 
 ```javascript
-const numbers = [1, 3, 4, 7, 2, 1, 9, 0]
-
-const doubled = []
-```
-
-Vamos a recorrer cada elemento del arreglo `numbers` con un ciclo `for`, multiplicando el número por dos y lo
-agregaremos al arreglo vacío.
-
-```javascript
-for(let i = 0; i < numbers.length; i++) {
-  doubled.push(numbers[i] * 2)
+function calculateAge(birthYear) {
+    var age = 2020 - birthYear;
+    return age;
 }
 ```
 
-> El método `push()` agrega un nuevo elemento al final de un arreglo. Contrario al método `pop()` que elimina el último
-> elemento del arreglo cambiando su longitud.
-
-Como estamos comparando que `i < numbers.length` el ciclo va a terminar con el último elemento del arreglo.
+Cuando vemos `return` en una función significa que va a retornar un valor al final de la ejecución de la función. Este valor puede ser guardado en una variable.
 
 ```javascript
-const numbers = [1, 3, 4, 7, 2, 1, 9, 0]
-
-const doubled = []
-
-for(let i = 0; i < numbers.length; i++) {
-  doubled.push(numbers[i] * 2)
-}
-
-console.log(numbers)  // [1, 3, 4, 7, 2, 1, 9, 0]
-console.log(doubled)  // [2, 6, 8, 14, 4, 2, 18, 0]
+var ageJohn = calculateAge(1995);
 ```
 
-![multiplyByTwo](./assets/doubleNumbers.png)
+Para ejecutar una función colocamos el nombre de la función seguido de `()` con los argumentos necesarios. En este ejemplo la variable `ageJohn` contiene el resultado que retorne `calculateAge()`.
+
+```javascript
+function calculateAge(birthYear) {
+    var age = 2020 - birthYear;
+    return age;
+}
+
+var ageJohn = calculateAge(1995);
+
+console.log(ageJohn); // 25
+```
+
+![calculateAge](./assets/calculateAge.png)
+
+Ahora podemos llamar la misma función las veces que queramos sin necesidad de repetir las mismas líneas de código una y otra vez. Las funciones también pueden llamar a otras funciones.
+
+```javascript
+function yearsUntilRetirement(year, name) {
+  var age = calculateAge(year);
+  var retirement = 65 - age;
+  console.log(name + ' retires in ' + retirement + ' years.');
+}
+```
+
+Algunas funciones no retornan valor alguno, como `yearsUntilRetirement` qué sólo muestra un mensaje en consola. En este caso no podemos guardar el resultado en una variable como hicimos con `ageJohn`.
+
+```javascript
+yearsUntilRetirement(1995, 'John Doe');
+// John Doe retires in 40 years.
+```
+
+![yearsUntilRetirement](./assets/yearsUntilRetirement.png)

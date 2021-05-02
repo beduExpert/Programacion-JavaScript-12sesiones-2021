@@ -2,11 +2,11 @@
 
 ---
 
-## Ejemplo 2: Expresión de Función
+## Ejemplo 2: Transformando objetos en arreglos
 
 ### Objetivo
 
-Analizar la diferencia entre declaración de función y expresión de función.
+Distinguir la sintaxis y correcta implementación de los arreglos en JavaScript.
 
 #### Requisitos
 
@@ -20,37 +20,56 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 </html>
 ```
 
-Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-3.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
-
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-4.js` que es donde se trabajarán los ejemplos de esta
+sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
 
 #### Desarrollo
 
-Ya vimos cómo en las declaraciones de funciones comenzamos con `function` después el nombre y los argumentos de la función dentro de paréntesis.
+Vamos a convertir un objeto en un arreglo con los pares `[key, value]` por cada propiedad.
 
 ```javascript
-function whatDoYouDo(job, name) {
-  ...
+const car = {
+  brand: 'Nissan',
+  model: 'Versa',
+  year: 2020
 }
+
+// [['brand', 'Nissan'], ['model', 'Versa'], ['year', 2020]]
 ```
 
-La sintaxis cambia un poco en una expresión de función.
+Para resolver este ejercicio haremos uso del
+método [`Object.keys()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
+el cual retorna un arreglo con el nombre de las propiedades de un objeto.
 
 ```javascript
-var whatDoYouDo = function(job, name) {
-  switch (job) {
-    case 'developer':
-      return name + ' develops cool apps.';
-    case 'designer':
-      return name + ' designs awesome websites.';
-    default:
-      return name + ' does something else.'
-  }
+const obj = {
+  a: 'some string',
+  b: 42,
+  c: false
+};
+
+console.log( Object.keys(obj) );  // ['a', 'b', 'c']
+```
+
+Después usaremos un ciclo para ir recorriendo todas las propiedades del objeto e ir obteniendo sus respectivos valores.
+
+```javascript
+const car = {
+  brand: 'Nissan',
+  model: 'Versa',
+  year: 2020
 }
 
-console.log(whatDoYouDo('developer', 'John Doe'));
-console.log(whatDoYouDo('designer', 'Jane Doe'));
-console.log(whatDoYouDo('retired', 'Mark Doe'));
-```
-> No es necesario incluir `break` en cada caso del `switch` porque `return` finaliza la función, el siguiente código no es ejecutado.
+const keys = Object.keys(car)
+const pairs = []
 
-![whatDoYouDo](./assets/whatDoYouDo.png)
+for(let i = 0; i < keys.length; i++) {
+  pairs.push( [keys[i], car[keys[i]]] )
+}
+
+console.log(pairs)
+
+// [['brand', 'Nissan'], ['model', 'Versa'], ['year', 2020]]
+```
+
+![keyValuePairs](./assets/keyValuePairs.png)

@@ -2,36 +2,40 @@
 
 ---
 
-## Reto 2: Número mayor
+## Reto 2: Arreglo a objeto
 
 ### Objetivos
 
-Implementar adecuadamente los conceptos vistos hasta el momento de funciones y ciclos para solucionar un problema.
+Implementar adecuadamente los conceptos vistos hasta el momento de arreglos y ciclos para solucionar un problema.
 
 #### Requisitos
 
-Haber terminado el [reto 1](../Reto-01).
+En el ejemplo 2 transformamos un objeto a un arreglo con los pares `[key, value]` por cada propiedad y valor del objeto.
+
+```javascript
+const car = {
+  brand: 'Nissan',
+  model: 'Versa',
+  year: 2020
+}
+
+const keys = Object.keys(car)
+const pairs = []
+
+for(let i = 0; i < keys.length; i++) {
+  pairs.push( [keys[i], car[keys[i]]] )
+}
+
+console.log(pairs)
+
+// [['brand', 'Nissan'], ['model', 'Versa'], ['year', 2020]]
+```
 
 #### Desarrollo
 
-Completar la función `getLargerInt` la cual recibe dos números enteros. La función debe retornar el número mayor.
+Para este reto vamos a realizar lo opuesto. Es decir, tomar un arreglo con pares `[key, value]` y crear un objeto con
+sus respectivas propiedades y valores.
 
 ```javascript
-function getLergerInt(number1, number2) {
-  ...
-}
+const car = [['brand', 'Nissan'], ['model', 'Versa'], ['year', 2020]]
 ```
-
-<details>
-  <summary>Solución</summary>
-
-```javascript
-function getLergerInt(number1, number2) {
-  if(number1 > number2) {
-    return number1
-  } else {
-    return number2
-  }
-}
-```
-</details>

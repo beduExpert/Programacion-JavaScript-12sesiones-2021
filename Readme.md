@@ -11,9 +11,9 @@ Conocer los fundamentos del lenguaje para poder interactuar con la web.
 
  - [Sesión 2: Controles de flujo](./Sesion-02)
 
- - [Sesión 3: Funciones](./Sesion-03)
+ - [Sesión 3: Objetos y arreglos](./Sesion-03)
 
- - [Sesión 4: Objetos y arreglos](./Sesion-04)
+ - [Sesión 4: Funciones](./Sesion-04)
 
  - [Sesión 5: Programación orientada a objetos](./Sesion-05)
 

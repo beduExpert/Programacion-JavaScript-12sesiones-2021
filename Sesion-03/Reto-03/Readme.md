@@ -2,56 +2,34 @@
 
 ---
 
-## Reto 3: Fibonacci
+## Reto 3: Extraer una lista de propiedades
 
 ### Objetivos
 
-Implementar adecuadamente los conceptos vistos hasta el momento de funciones y ciclos para solucionar un problema.
+Extraer propiedades de un objeto anidado mediante asignación por destructuring.
 
 #### Requisitos
 
-Haber terminado el [reto 2](../Reto-02).
+`N/A`
 
 #### Desarrollo
 
-En la serie de Fibonacci:
-
-`1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...`
-
-Cada elemento se obtiene sumando los dos valores anteriores.
-
-Completar la función `fibonacciSequence` la cuál recibe `limit`, un entero positivo que representa la cantidad de elementos de la serie que queremos.
+Dado el siguiente objeto:
 
 ```javascript
-function fibonacciSequence(limit) {
-  ...
-}
-```
-
-La función debe mostrar en consola los elementos de la serie hasta que `limit` sea alcanzado.
-
-```javascript
-fibonacciSequence(1); // 1
-fibonacciSequence(2); // 1, 1
-fibonacciSequence(5); // 1, 1, 2, 3, 5
-```
-
-<details>
-  <summary>Solución</summary>
-
-```javascript
-function fibonacci(num) {
-  if (num <= 1) return 1;
-
-  return fibonacci(num - 1) + fibonacci(num - 2);
-}
-
-function fibonacciSequence(limit) {
-  if(limit < 1) return console.log('Limit must be greater than 0');
-
-  for(var i = 0; i < limit; i++ ) {
-    console.log( fibonacci(i) );
+const person = {
+  firstName: 'John',
+  lastName: 'Doe',
+  links: {
+    web: {
+      blog: 'https://johndoe.com'
+    }, 
+    social: {
+      facebook: 'https://facebook.com/john.doe',
+      instagram: 'https://instagram.com/john.doe'
+    } 
   }
 }
 ```
-</details>
+
+Extraer las URLs de `facebook` e `instagram` y renombrar las variables por `fb` e `ig` respectivamente.
