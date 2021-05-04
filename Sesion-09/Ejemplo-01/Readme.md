@@ -1,74 +1,25 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 09`](../Readme.md) > `Ejemplo 01`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Ejemplo 01`
 
 ---
 
-## Ejemplo 1: Object destructuring
+## Ejemplo 1: Inspeccionando el DOM
 
 ### Objetivo
 
-Extraer propiedades de un objeto mediante asignación por destructuring.
+Identificar de manera práctica la variable global `document` como representación del código HTML.
 
 #### Requisitos
 
-En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.html`:
-
-```html
-<html>
-  <head>
-    <meta charset="utf-8"/>
-    <title>Ejemplo 1: Object destructuring</title>
-  </head>
-  <body>
-    <script type="text/javascript" src="./ejemplo-3.js"></script>
-  </body>
-</html>
-```
-
-Dentro de la misma carpeta creamos un archivo `ejemplo-1.js` que es donde se trabajará este ejemplo. Finalmente abre el 
-archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
+Visitar cualquier página web y abrir la consola del navegador. Para este ejemplo trabajaremos sobre la página de [Google](https://www.google.com/).
 
 #### Desarrollo
 
-Si la propiedad que queremos extraer no existe en el objeto se retorna `undefined`. Podemos usar asignar un valor por
-default en caso de no encontrar la propiedad que buscamos. Para esto debemos asignar (`=`) un valor dentro de las llaves.
+En la consola vamos a poner la variable global `document`. Esto nos va a mostrar un objeto que representa la página web, contiene todas las etiquetas HTML de la página.
 
-```javascript
-const person = {
-  firstName: 'John',
-  lastName: 'Doe'
-};
+![DOM](./assets/document-1.png)
 
-const { firstName, country = 'Unknown' } = person;
+Si seguimos expandiendo las etiquetas podemos ver cómo se selecciona en la pantalla el área que representa el objeto o la etiqueta por la que estamos pasando el mouse.
 
-console.log(firstName, country); // John Unknown
-```
+![DOM](./assets/document-2.png)
 
-En ocasiones no queremos usar el mismo nombre de la propiedad del objeto, por ejemplo cuando estamos consumiendo
-información de un recurso externo o de una base de datos. Usando `:` podemos renombrar una variable.
-
-```javascript
-const person = {
-  firstName: 'John',
-  lastName: 'Doe'
-};
-
-const { firstName: name } = person;
-
-console.log(name); // John 
-```
-
-La asignación de un valor default y el cambio de nombre de la variable se pueden mezclar para casos de usos un poco más
-complejos.
-
-```javascript
-const person = {
-  firstName: 'John',
-  lastName: 'Doe'
-};
-
-const { firstName: name,  country: ctry = 'Unknown'} = person;
-
-console.log(name, ctry); // John Unknown
-```
-
-![Object Destructuring](./assets/destructuring.png)
+Es importante recordar que aunque se muestre como si fuera código HTML en la consola, `document` es un objeto de JavaScript, y todas las etiquetas dentro de este también son objetos. Más adelante veremos cómo podemos manipular estos objetos y ver los cambios reflejados en la pantalla.

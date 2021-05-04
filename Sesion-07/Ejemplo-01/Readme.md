@@ -1,25 +1,94 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Ejemplo 01`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 06`](../Readme.md) > `Ejemplo 01`
 
 ---
 
-## Ejemplo 1: Inspeccionando el DOM
+## Ejemplo 1: Mutando objetos
 
 ### Objetivo
 
-Identificar de manera práctica la variable global `document` como representación del código HTML.
+Crear una función que inmutable.
 
 #### Requisitos
 
-Visitar cualquier página web y abrir la consola del navegador. Para este ejemplo trabajaremos sobre la página de [Google](https://www.google.com/).
+En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.html`:
+
+```html
+<html>
+  <head>
+    <script type="text/javascript" src="./ejemplos-sesion-6.js"></script>
+  </head>
+</html>
+```
+
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-6.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
+
 
 #### Desarrollo
 
-En la consola vamos a poner la variable global `document`. Esto nos va a mostrar un objeto que representa la página web, contiene todas las etiquetas HTML de la página.
+Para ver cómo funciona la inmutabilidad vamos a empezar creando un objeto que represente un carro.
 
-![DOM](./assets/document-1.png)
+```javascript
+var car = {
+	brand: 'Nissan',
+	model: 'Sentra',
+	year: 2020
+}
+```
 
-Si seguimos expandiendo las etiquetas podemos ver cómo se selecciona en la pantalla el área que representa el objeto o la etiqueta por la que estamos pasando el mouse.
+Ahora vamos a crear una función que agregue la propiedad color al auto.
 
-![DOM](./assets/document-2.png)
+```javascript
+function addColor(car) {
+  car.color = 'Black';
 
-Es importante recordar que aunque se muestre como si fuera código HTML en la consola, `document` es un objeto de JavaScript, y todas las etiquetas dentro de este también son objetos. Más adelante veremos cómo podemos manipular estos objetos y ver los cambios reflejados en la pantalla.
+  return car;
+}
+```
+
+Ahora llamamos a la función pasándole el objeto `car` y guardamos en resultado en otra variable.
+
+```javascript
+console.log('Before calling addColor()', car);
+
+var sameCar = addColor(car);
+
+console.log('After calling addColor()', car);
+console.log('After calling addColor()', sameCar);
+
+console.log('Same car?', car === sameCar); // true
+```
+
+La función `addColor` muta el objeto `car` que recibe. La primera vez que mostramos en consola vemos que no existe la propiedad `color`, después de llamar a la función vemos la propiedad en ambos objetos.
+
+El objeto retornado por `addColor` es el mismo que recibió. Ambas variables, tanto `car` como `sameCar` están apuntando al mismo objeto en memoria.
+
+![Mutable](./assets/mutable.png)
+
+Tenemos que hacer unos cambios para que `addColor` no mute el objeto que recibe.
+
+```javascript
+function addColor(car) {
+  var newCar = Object.assign({}, car, {
+    color: 'Black'
+  });
+
+  return newCar;
+}
+```
+
+`Object.assign()` asigna las propiedades de un objeto a otro sin modificar el objeto original. En este ejemplo está copiando todas las propiedades de `car` en un nuevo objeto vacío `{}` y agregando la propiedad `color`.
+
+```javascript
+console.log('Before calling addColor()', car);
+
+var newCar = addColor(car);
+
+console.log('After calling addColor()', car);
+console.log('After calling addColor()', newCar);
+
+console.log('Same car?', car === newCar); // false
+```
+
+Como ahora la función `addColor` está creando un nuevo objeto vemos que `car` no cambia sus propiedades y el objeto retornado es diferente al que recibe la función.
+
+![Immutable](./assets/immutable.png)

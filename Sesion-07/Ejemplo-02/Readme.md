@@ -1,12 +1,12 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Ejemplo 02`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 06`](../Readme.md) > `Ejemplo 02`
 
 ---
 
-## Ejemplo 2: Cambiando el DOM
+## Ejemplo 2: Creando funciones puras
 
 ### Objetivo
 
-Modificar el DOM agregando nodos hijos a un elemento.
+Crear funciones puras.
 
 #### Requisitos
 
@@ -15,42 +15,78 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 ```html
 <html>
   <head>
-    <title>Ejemplo 2: Cambiando el DOM</title>
+    <script type="text/javascript" src="./ejemplos-sesion-6.js"></script>
   </head>
-  <body>
-    <p>One</p>
-    <p>Two</p>
-    <p>Three</p>
-
-    <script>
-      // Code goes here
-    </script>
-  </body>
 </html>
 ```
 
-Opcionalmente se puede manejar el código de JavaScript en un archivo independiente como se ha trabajado en sesiones anteriores.
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-6.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
+
 
 #### Desarrollo
 
-En este ejemplo vamos a ver cómo cambiar la estructura del DOM. Lo primero es seleccionar todas las etiquetas `p` del documento, esto lo podemos lograr con el método `getElementsByTagName`.
+En el ejemplo anterior buscamos la forma de hacer una función que no mutara el objeto que recibe.
 
 ```javascript
-var paragraphs = document.body.getElementsByTagName("p");
+function addColor(car) {
+  var newCar = Object.assign({}, car, {
+    color: 'Black'
+  });
 
-console.log('Colección de nodos: ', paragraphs);
-
-console.log('Primer nodo: ', paragraphs[0]);
-console.log('Segundo nodo: ', paragraphs[1]);
-console.log('Tercer nodo: ', paragraphs[2]);
+  return newCar;
+}
 ```
 
-Podemos ver en consola que `paragraphs` representa una colección con las tres etiquetas `p` de nuestro documento.
+Tratando de no mutar `car` terminamos creando una función pura, como podrás ver no produce ningún efecto secundario. Es por ello que la inmutabilidad está muy ligada a las funciones puras.
 
-![Paragraphs](./assets/paragraphs.png)
+Veamos otro ejemplo. Tenemos un carrito de compras y queremos crear una función que agregue más artículos.
 
-Vamos a cambiar el orden de estos nodos con el método `insertBefore`, el cual recibe dos argumentos, el primero es el nodo a insertar justo antes del nodo proporcionado como segundo argumento.
+```javascript
+var cart = [
+  {
+    item: 'Laptop',
+    quantity: 1
+  }
+]
+```
 
-![Nodes](./assets/nodes.png)
+Como el carrito va a almacenar múltiples elementos usaremos un arreglo. Cada artículo será representado por un objeto con dos propiedades `item` y `quantity`.
 
-Al abrir la página vemos que el órden de los párrafos cambia. Un nodo puede existir en el documento en un sólo lugar a la vez, por lo que al insertar `Three` antes de `One` primero se elimina del final de la lista para insertarse al principio. **Todas las operaciones que impliquen insertar nodos tienen como efecto secundario la eliminación del nodo en la posición actual** si es que ya existe en el DOM.
+```javascript
+function addItemToCart(item, quantity) {
+  cart.push({
+    item: item,
+    quantity: quantity
+  })
+}
+```
+
+La solución más obvia sería usar `push()` para agregar un nuevo objeto con las propiedades `item` y `quantity`. Esta función no es pura porque está modificando  `cart`, una variable que no se encuentra dentro de esta función. Quizás en este ejemplo no es un problema, pero si estuviéramos haciendo una tienda en línea, es posible que otras partes de la aplicación intenten acceder a `cart` al mismo tiempo que estamos ejecutando la función `addItemToCart` y eso sí podría representar un problema como falta de inconsistencia en los datos.
+
+```javascript
+function addItemToCart(cart, item, quantity) {
+  var newCart = cart.map(function(element) {
+    return element;
+  });
+
+  newCart.push({
+    item: item,
+    quantity: quantity
+  })
+
+  return newCart;
+}
+```
+> Como `map()` crea un nuevo arreglo lo podemos usar para crear una copia retornando el parámetro que recibe sin modificarlo.
+
+Una alternativa sería pasar `cart` como argumento a la función. Hacer una copia de todo el arreglo para no mutar el original, agregar el nuevo objeto y retornar el arreglo actualizado.
+
+```javascript
+cart = addItemToCart(cart, 'Phone', 1);
+
+console.log(cart);
+```
+
+Esta sería una forma más funcional, recuerda que en este paradigma se da prioridad a la inmutabilidad, lo que significa crear nuevas variables que van a reemplazar a los valores antiguos.
+
+![Pure Function](./assets/pure-function.png)

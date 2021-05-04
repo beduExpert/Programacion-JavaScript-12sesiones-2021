@@ -1,12 +1,12 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 06`](../Readme.md) > `Reto 02`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 05`](../Readme.md) > `Reto 02`
 
 ---
 
-## Reto 2: Compact
+## Reto 2: Group
 
 ### Objetivos
 
-Implementar funciones de alto orden para manipular arreglos.
+Crear un constructor, agregar métodos al prototype e instanciar múltiples objetos a partir de dicho constructor.
 
 #### Requisitos
 
@@ -14,27 +14,55 @@ Haber terminado el [Reto 1](../Reto-01/Readme.md).
 
 #### Desarrollo
 
-Crear una función `compact` que recibe un arreglo y retorna un nuevo arreglo sin incluir los valores que sean falsy.
+Crear un function constructor `Group` el cual crea una lista (arreglo) vacía.
+
+Agregar los siguientes métodos a `Group`:
+
+1. `add`: Agrega un nuevo valor al grupo sólo si no existe.
+
+2. `has`: Retorna un booleano indicando si el valor es un miembro del grupo.
+
+3. `from`: Método estático que recibe un arreglo y crea un grupo con todos los elementos de dicho arreglo.
 
 ```javascript
-function compact(array) {
+var Group = function() {
   ...
 }
 
-var array = [0, 1, false, 2, '', 3];
-var compactedArray = compact(array);
+var group = Group.from([1, 2, 3, 4, 5]);
+console.log(group); // Group { members: [ 1, 2, 3, 4, 5 ] }
+console.log(group.has(5)); // true
+console.log(group.has(10)); // false
 
-console.log(compactedArray); // [1, 2, 3]
+group.add(10);
+console.log(group.has(10)); // true
 ```
 
 <details>
   <summary>Solución</summary>
 
 ```javascript
-function compact(array) {
-  return array.filter(function(element) {
-    return !!element;
-  });
+var Group = function() {
+  this.members = [];
+}
+
+Group.prototype.add = function(value) {
+  if (!this.has(value)) {
+    this.members.push(value);
+  }
+}
+
+Group.prototype.has = function(value) {
+  return this.members.includes(value);
+}
+
+Group.from = function(collection) {
+  var group = new Group();
+
+  for(var i = 0; i < collection.length; i++) {
+    group.add(collection[i]);
+  }
+  return group;
 }
 ```
 

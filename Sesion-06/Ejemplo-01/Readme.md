@@ -1,12 +1,12 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 06`](../Readme.md) > `Ejemplo 01`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 05`](../Readme.md) > `Ejemplo 01`
 
 ---
 
-## Ejemplo 1: Mutando objetos
+## Ejemplo 1: Function constructor
 
 ### Objetivo
 
-Crear una función que inmutable.
+Crear constructores para instanciar objetos.
 
 #### Requisitos
 
@@ -15,80 +15,67 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 ```html
 <html>
   <head>
-    <script type="text/javascript" src="./ejemplos-sesion-6.js"></script>
+    <script type="text/javascript" src="./ejemplos-sesion-5.js"></script>
   </head>
 </html>
 ```
 
-Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-6.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-5.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
 
 
 #### Desarrollo
 
-Para ver cómo funciona la inmutabilidad vamos a empezar creando un objeto que represente un carro.
+Ya mencionamos que podemos usar un constructor para crear múltiples objetos como:
 
 ```javascript
-var car = {
-	brand: 'Nissan',
-	model: 'Sentra',
-	year: 2020
+var john = {
+	name: 'John',
+	birthYear: 1990,
+	job: 'Developer'
 }
 ```
 
-Ahora vamos a crear una función que agregue la propiedad color al auto.
+La forma más común de hacer esto es mediante un `function constructor`, el cuál es una expresión de función como la siguiente:
 
 ```javascript
-function addColor(car) {
-  car.color = 'Black';
-
-  return car;
+var Person = function(name, birthYear, job) {
+  this.name = name;
+  this.birthYear = birthYear;
+  this.job = job;
 }
 ```
 
-Ahora llamamos a la función pasándole el objeto `car` y guardamos en resultado en otra variable.
+> Cuando estamos creando constructores una convención es nombrarlas con la primera letra mayúscula para diferenciar el constructor de las instancias.
+
+Vemos que este constructor recibe tres argumentos los cuáles son las propiedades que queremos que tenga nuestro objeto.
 
 ```javascript
-console.log('Before calling addColor()', car);
-
-var sameCar = addColor(car);
-
-console.log('After calling addColor()', car);
-console.log('After calling addColor()', sameCar);
-
-console.log('Same car?', car === sameCar); // true
+var john = new Person('John', 1990, 'Developer');
 ```
 
-La función `addColor` muta el objeto `car` que recibe. La primera vez que mostramos en consola vemos que no existe la propiedad `color`, después de llamar a la función vemos la propiedad en ambos objetos.
-
-El objeto retornado por `addColor` es el mismo que recibió. Ambas variables, tanto `car` como `sameCar` están apuntando al mismo objeto en memoria.
-
-![Mutable](./assets/mutable.png)
-
-Tenemos que hacer unos cambios para que `addColor` no mute el objeto que recibe.
+El operador `new` crea un nuevo objeto vacío, después se ejecuta la función `Person()`, esta es la razón por la que el constructor utiliza `this`, está haciendo referencia al nuevo objeto vacío para asignarle las propiedades.
 
 ```javascript
-function addColor(car) {
-  var newCar = Object.assign({}, car, {
-    color: 'Black'
-  });
-
-  return newCar;
-}
+console.log( john );
+/*
+*  {
+*    name: 'John',
+*    birthYear: 1990,
+*    job: 'Developer'
+*  }
+*/
 ```
 
-`Object.assign()` asigna las propiedades de un objeto a otro sin modificar el objeto original. En este ejemplo está copiando todas las propiedades de `car` en un nuevo objeto vacío `{}` y agregando la propiedad `color`.
+Hemos creado un objeto `john` el cuál es una instancia del constructor `Person`.
+
+![Function Constructor](./assets/function-constructor.png)
+
+De esta manera podemos crear todas las instancias que sean necesarias a partir del mismo construcor.
 
 ```javascript
-console.log('Before calling addColor()', car);
+var mark = new Person('Mark', 1985, 'Teacher');
 
-var newCar = addColor(car);
-
-console.log('After calling addColor()', car);
-console.log('After calling addColor()', newCar);
-
-console.log('Same car?', car === newCar); // false
+var jane = new Person('Jane', 1975, 'Designer');
 ```
 
-Como ahora la función `addColor` está creando un nuevo objeto vemos que `car` no cambia sus propiedades y el objeto retornado es diferente al que recibe la función.
-
-![Immutable](./assets/immutable.png)
+![Instances](./assets/instances.png)

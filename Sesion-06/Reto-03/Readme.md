@@ -1,12 +1,12 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 06`](../Readme.md) > `Reto 03`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 05`](../Readme.md) > `Reto 03`
 
 ---
 
-## Reto 3: Loop
+## Reto 3: Perímetro
 
 ### Objetivos
 
-Implementar funciones de alto orden para manipular arreglos.
+Crear un constructor, agregar métodos al prototype e instanciar múltiples objetos a partir de dicho constructor.
 
 #### Requisitos
 
@@ -14,35 +14,33 @@ Haber terminado el [Reto 2](../Reto-02/Readme.md).
 
 #### Desarrollo
 
-Crear una función de alto orden `loop` que será similar a un `for`. Recibe `value`, una función `test`, una función `update` y una función `body`. En cada iteración se debe ejecutar la función `test` y terminar el ciclo si la función retorna `false`. Después se ejecuta la función `body` dándole como argumento el `value` actual. Por último se ejecuta la función `update` para crear un nuevo valor y se repite el proceso.
+Crear un function constructor `Triangle` con tres parámetros `a`, `b` y `c`. Cada uno representa una lado del triángulo.
+
+Agregar el método `getPerimeter` al `prototype` de `Triangle`, el cual retorna el perímetro del tríangulo.
 
 ```javascript
-function loop(start, test, update, body) {
+var Triangle = function(a, b, c) {
   ...
 }
 
-var test = function(n) {
-  return n > 0;
-}
+var triangle = new Triangle(1, 2, 3);
 
-var update = function(n) {
-  return n - 1;
-}
-
-loop(3, test, update, console.log);
-// 3
-// 2
-// 1
+console.log(triangle); // Triangle { a: 1, b: 2, c: 3 }
+console.log(triangle.getPerimeter()); // 6
 ```
 
 <details>
   <summary>Solución</summary>
 
 ```javascript
-function loop(start, test, update, body) {
-  for (var value = start; test(value); value = update(value)) {
-    body(value);
-  }
+var Triangle = function(a, b, c) {
+  this.a = a;
+  this.b = b;
+  this.c = c;
+}
+
+Triangle.prototype.getPerimeter = function() {
+  return this.a + this.b + this.c;
 }
 ```
 

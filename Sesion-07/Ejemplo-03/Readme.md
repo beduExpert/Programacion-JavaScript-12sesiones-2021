@@ -1,12 +1,12 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Ejemplo 03`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 06`](../Readme.md) > `Ejemplo 03`
 
 ---
 
-## Ejemplo 3: Crear nuevos nodos
+## Ejemplo 3: Suma de dígitos
 
 ### Objetivo
 
-Crear nuevos nodos para manipular la estructura del DOM.
+Implementar múltiples funciones de alto orden para resolver un problema
 
 #### Requisitos
 
@@ -15,75 +15,93 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 ```html
 <html>
   <head>
-    <title>Ejemplo 3: Crear nuevos nodos</title>
+    <script type="text/javascript" src="./ejemplos-sesion-6.js"></script>
   </head>
-  <body>
-    <blockquote id="quote">
-      No book can ever be finished. While working on it we learn
-      just enough to find it immature the moment we turn away
-      from it.
-    </blockquote>
-
-    <script>
-      // Code goes here
-    </script>
-  </body>
 </html>
 ```
 
-Opcionalmente se puede manejar el código de JavaScript en un archivo independiente como se ha trabajado en sesiones anteriores.
+Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-6.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
+
 
 #### Desarrollo
 
-Obtener un nuevo nodo normalmente consta de tres pasos, el primero es crear el nodo en sí con `document.createElement`, el segundo paso es crear otro nodo de texto con `document.createTextNode`, el último paso es agregar el texto como hijo del nodo creado en el primero paso.
+Sumar todos los dígitos de un número entero:
 
-En este ejemplo vamos a crear una función que se encargue de estos tres pasos, la función recibirá dos argumentos, el primero será el tipo de nodo que queremos, y el segundo el hijo. Usaremos esta función para agregar el autor de la frase que ya tenemos en nuestro documento.
+```
+Input: 12345
+
+ -- 1 + 2 + 3 + 4 + 5 = 15
+
+Output: 15
+```
+
+Este ejercicio puede ser resuelto mediante operadores matemáticos, pero en este ejemplo veremos otra forma implementando múltiples funciones. Lo primero que haremos es crear un arreglo y cada dígito del número será un elemento del arreglo. De esta forma será más fácil trabajar con funciones de alto orden como `filter` y `reduce`.
 
 ```javascript
-function createNode(type, child) {
-  var node = document.createElement(type);
-  var text = document.createTextNode(child);
+var number = 12345;
 
-  node.appendChild(text);
+var string = number.toString();
 
-  return node;
+var array = string.split('');
+
+console.log(number); // 12345
+console.log(string); // '12345'
+console.log(array); // ['1', '2', '3', '4', '5']
+```
+
+Con el método `toString()` podemos convertir un número entero a un string. El método `split()` nos permite dividir un string en una serie de substrings y colocarlos dentro de un arreglo. En JavaScript podemos encadenar funciones, lo que retorne la primera función será pasada como argumento a la siguiente función, de esta manera podemos simplificar nuestro código.
+
+```javascript
+var number = 12345;
+
+var array = number.toString().split('');
+
+console.log(number); // 12345
+console.log(array); // ['1', '2', '3', '4', '5']
+```
+
+Antes de poder realizar operaciones matemáticas con este arreglo debemos convertir cada elemento a un entero nuevamente. En la sesión uno vimos cómo usar la función `Number()` para convertir un string a un number. Para aplicar esta función a cada elemento del arreglo usaremos la función `map()`.
+
+```javascript
+var arrayOfNumbers = array.map(function(number) {
+  return Number(number);
+})
+
+console.log(arrayOfNumbers); // [1, 2, 3, 4, 5]
+```
+
+Cuando usemos una función como `map()` y queremos que retorne el resultado de otra función con el mismo argumento podemos simplificarlo de la siguiente manera:
+
+```javascript
+var arrayOfNumbers = array.map(Number);
+
+console.log(arrayOfNumbers); // [1, 2, 3, 4, 5]
+```
+
+Por último debemos sumar todos los elementos de este arreglo. Ya vimos cómo podemos usar `reduce` para reducir a un único valor todos los elementos de un arreglo.
+
+```javascript
+var sum = arrayOfNumbers.reduce(function(a, b) {
+  return a + b;
+}, 0);
+
+console.log(sum); // 15
+```
+
+Todas estas funciones pueden ser encadenadas de la misma forma que hicimos con las primeras dos. El producto final dentro de una función sería:
+
+```javascript
+function sumDigits(number) {
+  return number
+         .toString()
+         .split('')
+         .map(Number)
+         .reduce(function(a, b) {
+           return a + b;
+         }, 0)
 }
 
-console.log(createNode('h1', 'Hello World')); // <h1>Hello World</h1>
+console.log(sumDigits(12345)); // 15
 ```
 
-Hasta ahora está bien, pero podemos extender aún más la funcionalidad de esta función, el segundo parámetro no necesaiamente debe ser un string, también podría ser un nodo. De esta forma podríamos anidar nodos con la misma función.
-
-```javascript
-function createNode(type, child) {
-  var node = document.createElement(type);
-
-  if(typeof child === "string") {
-    var text = document.createTextNode(child);
-    node.appendChild(text);
-  } else {
-    node.appendChild(child);
-  }
-
-  return node;
-}
-
-console.log(createNode('h1', createNode('strong', 'Hello World')));
-/**
-* <h1>
-*  <strong>Hello World</strong>
-* </h1>
-**/
-```
-
-Con esta función es ahora más fácil crear nodos con sus respectivos hijos. Ahora podemos seleccionar el nodo que contiene la frase célebre con su respectivo id y agregar el autor.
-
-```javascript
-document.getElementById("quote")
-  .appendChild(
-    createNode("footer", createNode("strong", "- Karl Popper"))
-  )
-```
-> Se puede escribir en una sola línea. Es buena práctica agregar los saltos de línea y la indentación para facilitar la lectura.
-
-![Create Nodes](./assets/create-nodes.png)
+![Sum Digits](./assets/sum-digits.png)

@@ -1,7 +1,6 @@
-
 [`Programación con JavaScript`](../Readme.md) > `Sesión 06`
 
-# Sesión 6: Programación funcional
+# Sesión 6: Programación orientada a objetos
 
 ## Objetivos
 
@@ -11,184 +10,145 @@ Crear constructores a partir de los cuales se puedan instanciar múltiples objet
 
 ## Tabla de Contenidos
 
-- **[Programación funcional](#programación-funcional)**
+- **[Paradigma de programación](#paradigma-de-programación)**
 
-- **[Inmutabilidad](#inmutabilidad)**
+- **[Programación orientada a objetos](#programación-orientada-a-objetos)**
 
-	- [Ejemplo 1: Mutando objetos](./Ejemplo-01)
+	- [Ejemplo 1: Function constructor](./Ejemplo-01)
 
-- **[Funciones puras](#funciones-puras)**
+	- [Reto 1: Vectores](./Reto-01)
 
-	- [Ejemplo 2: Creando funciones puras](./Ejemplo-02)
+- **[Herencia](#herencia)**
 
-- **[Funciones de primera clase](#funciones-de-primera-clase)**
+	- [Ejemplo 2: Heredando propiedades](./Ejemplo-02)
 
-- **[Funciones de alto orden](#funciones-de-alto-orden)**
+	- [Reto 2: Group](./Reto-02)
 
-	- [Ejemplo 3: Sumando Dígitos](./Ejemplo-03)
+- **[Prototype](#prototype)**
 
-	- [Reto 1: Flatten](./Reto-01)
+	- [Ejemplo 3: Heredando métodos](./Ejemplo-03)
 
-	- [Reto 2: Compact](./Reto-02)
-
-	- [Reto 3: Loop](./Reto-03)
+	- [Reto 3: Perímetro](./Reto-03)
 
 ---
 
-## Programación funcional
+## Paradigma de programación
 
-Como vimos en la sesión anterior existen distintos paradigmas de programación. La programación funcional es un paradigma declarativo, es decir, se enfoca en el _qué_ se desea lograr sin preocuparse mucho en el _cómo_ (el lenguaje de programación se encarga de esta parte).
+Un paradigma de programación es una forma de pensar a la hora de hacer tu código.
+Es como una receta que nos explica cómo debemos estructurar y organizar el código.
+Existen distintos tipos de paradigmas y estos difieren unos de otros en cuanto a
+conceptos y la forma de solucionar problemas.
 
-```javascript
-var numbers = [1, 2, 3, 4, 5];
-var doubles = [];
+Existen dos grandes categorías en cuanto a estilos de programación, y la mayoría de
+paradigmas es una variante de una de estas dos.
 
-for(var i = 0; i < numbers.length; i++) {
-	doubles.push(numbers[i] * 2);
-}
+<table>
+  <tr>
+    <th colspan="2">Programación imperativa</th>
+  </tr>
+  <tr>
+    <td colspan="2">Describe paso a paso un conjunto de instrucciones necesarias para solucionar el problema. Se enfoca en describir el <i>cómo</i> se llega a la solución.</td>
+  </tr>
+  <tr>
+    <th>Programación orientada a objetos</th>
+    <td>Se encapsulan tanto variables como funciones en objetos. Dichos objetos manipulan los datos de entrada para la obtención de datos de salida específicos. Cada objeto creado ofrece una funcionalidad específica. <strong>Ejemplos:</strong> C++, C#, Java.</td>
+  </tr>
+  <tr>
+    <th colspan="2">Programación declarativa</th>
+  </tr>
+  <tr>
+    <td colspan="2">Se describe el problema que se pretende solucionar. Está más enfocado en el <i>qué</i> solución se desea alcanzar.</td>
+  </tr>
+  <tr>
+    <th>Programación funcional</th>
+    <td>Está basado en las funciones matemáticas, lo que permite hacer uso de mecanismos matemáticos para optimizar procesos. Prevalece la inmutabilidad y los datos son usados con transparencia referencial. <strong>Ejemplos:</strong> Erlang, Rust, Haskell.</td>
+  </tr>
+</table>
 
-console.log(numbers); // [1, 2, 3, 4, 5]
-console.log(doubles); // [2, 4, 6, 8, 10]
-```
+Existen también **lenguajes multiparadigma**, es decir, que te permiten crear programas
+con múltiples estilos de programación, dándole al desarrollador la flexibilidad de
+escoger el mejor paradigma para cada tarea, esto implica que **ningún paradigma resuelve
+todos los problemas de la forma más sencilla y eficiente.**
 
-Este es un ejemplo de código imperativo. Generalmente usar ciclos es programación imperativa pues queda del lado del programador controlar cuándo iniciar, cuándo terminar y qué hacer en cada ciclo.
-
-```javascript
-var numbers = [1, 2, 3, 4, 5];
-var doubles = numbers.map(function(number) {
-	return number * 2;
-});
-
-console.log(numbers); // [1, 2, 3, 4, 5]
-console.log(doubles); // [2, 4, 6, 8, 10]
-```
-
-Esta es la forma declarativa del mismo código. Ambos fragmentos de código hacen exactamente lo mismo, crear un arreglo `doubles` con el doble de cada elemento del arreglo `numbers`. La diferencia con el segundo ejemplo es que hacemos uso del método `map()`, el programador no se encarga de controlar cuándo y dónde terminar el ciclo, sólo se encarga del resultado, obtener el doble de cada elemento dentro de `numbers`.
-
-> El método map() crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.
-
----
-
-## Inmutabilidad
-
-Decimos que algo es mutable cuando puede ser cambiado o modificado. Por lo tanto, inmutable es algo que no puede ser alterado. En términos de programación, las variables inmutables nunca cambian su valor. Este es un principio muy importante en la programación funcional, de hecho, lenguajes de programación como Elixir o Erlang no permiten la mutación de variables.
-
-En lugar de alterar una variable, creamos nuevos valores y reemplazamos los antiguos. Si bien JavaScript no es puramente funcional, es lo suficientemente flexible como para permitir o pretender serlo.
-
-Para llevar este concepto a la práctica es importante siempre preferir crear una nueva variable en lugar de intentar modificar la original. Esto se puede llevar a cabo con métodos como `map()` que no altera el arreglo original, o bien creando tus propias funciones inmutables.
-
-#### [Ejemplo 1: Mutando objetos](./Ejemplo-01)
+Un claro ejemplo de esto es JavaScript. Si bien se define como un lenguaje orientado
+a objetos, también incorpora capacidades de programación funcional.
 
 ---
 
-## Funciones puras
+## Programación orientada a objetos
 
-Para que una función pueda ser considerada pura debe cumplir dos reglas:
+También conocido como OOP por sus siglas en inglés (Object Oriented Programming), es un paradigma imperativo que hace fuerte uso de las propiedades y métodos de los objetos. Múltiples objetos interactuan entre ellos para construir aplicaciones complejas. Permite estructurar las aplicaciones en módulos, una buena forma de organizar y mantener limpio el código.
 
-1. El valor retornado siempre es el mismo cuando se da el mismo valor de entrada.
-
-2. No debe producir side effects (efectos secundarios).
-
-![Pure Function](./assets/pure-function.png)
-
-El primer punto se refiere a que si ejecutamos la misma función varias veces con los mismos argumentos siempre obtendremos el mismo resultado.
+En la sesión anterior creamos un objeto que representa información personal de una persona.
 
 ```javascript
-function add(a, b) {
-	return a + b;
+var john = {
+	name: 'John',
+	birthYear: 1990,
+	job: 'Developer'
 }
 ```
 
-Podemos llamar las veces que queramos la esta función de la forma `add(1, 2)` y sabemos que siempre vamos a obtener el mismo resultado `3`.
+Si queremos representar información de más personas tendríamos que crear múltiples objetos de la misma forma.
 
 ```javascript
-function randomNumber() {
-	return Math.floor(Math.random() * 10);
+var john = {
+	name: 'John',
+	birthYear: 1990,
+	job: 'Developer'
+}
+
+var mark = {
+	name: 'Mark',
+	birthYear: 1985,
+	job: 'Teacher'
+}
+
+var jane = {
+	name: 'Jane',
+	birthYear: 1975,
+	job: 'Designer'
 }
 ```
 
-Esta función no cumple la primera regla porque si la llamamos 10 veces, obtendremos cada vez un número aleatorio entre 1 y 10. No podemos predecir el valor de retorno de esta función.
+Hay una mejor forma de hacer esto. Imagina una plantilla o un template a partir del cual se pueden crear múltiples objetos.
 
-Los side effects son un término más amplio que el anterior. A grandes rasgos significa modificar algo fuera de la función. Algunos ejemplos:
+![Constructor](./assets/constructor.png)
 
-1. Mutar los parámetros que recibe una función como en el [Ejemplo 1](./Ejemplo-01).
+Este es un objeto `Person` que podemos utilzar como plantilla para crear varios objetos que representen personas. En otros lenguajes de programación a esto se le conoce como clase, en JavaScript le llamamos `Constructor`.
 
-2. Modificar cualquier variable fuera de la función.
+![Instances](./assets/instances.png)
 
-3. Llamadas a una API.
+De esta forma podemos crear los objetos que queramos a partir de la plantilla. En este ejemplo decimos que `john`, `mark` y `jane` son instancias del constructor `Person`. Todas las instancias tienen las mismas propiedades y métodos del constructor.
 
-4. `console.log()`
+#### [Ejemplo 1: Function constructor](./Ejemplo-01)
 
-La función anterior `add()` también cumple con la segunda regla, no produce side effects. Sólamente está trabajando con las variables que recibe la función y siempre retorna un valor.
-
-#### [Ejemplo 2: Creando funciones puras](./Ejemplo-02)
+#### [Reto 1: Vectores](./Reto-01)
 
 ---
 
-## Funciones de primera clase
+## Herencia
 
-En un lenguaje de programación se dice que una función es de primera clase cuando puede ser tratada como cualquier otra variable. Por ejemplo, cuando puede ser pasada como argumento a otras funciones o cuando puede ser asignada a una variable. Este comportamiento no es explusivo de JavaScript, otros lenguajes de programación como R o Scala también cuentan con esta característica.
+En términos simples la herencia es cuando un objeto está basado en otro objeto, es decir, un objeto puede acceder a las propiedades y métodos de otro objeto.
 
-Ya hemos guardado funciones anónimas en una variable anteriormente.
+![Inheritance](./assets/inheritance.png)
 
-```javascript
-var square = function(number) {
-	return number * number;
-}
+El constructor `Developer` tiene propiedades y métodos únicos cómo skills que domina, años de experiencia y el skill de su preferencia. Como `Developer` también es una persona, es decir, tambíen tiene nombre, edad y un empleo, el constructor `Developer` puede heredar del constructor `Person`, teniendo acceso a las mismas propiedades y métodos.
 
-var squareOfFour = square(4);
+#### [Ejemplo 2: Heredando propiedades](./Ejemplo-02)
 
-console.log(squareOfFour); // 16
-```
-
-Por lo tanto, las expresiones de funciones como estas son consideradas funciones de primera clase.
+#### [Reto 2: Group](./Reto-02)
 
 ---
 
-## Funciones de alto orden
+## Prototype
 
-Cuando una función recibe otra función como parámetro se le llama de alto orden o de orden superior. JavaScript nos proporciona varias funciones de alto orden para trabajar con estructuras de datos. Las más usadas son `map()`, `filter()` y `reduce()`.
+En JavaScript la herencia es posible gracias a una propiedad con la que cuentan todos los objetos llamada `Prototype`. Si queremos que las instancias hereden un método lo podemos colocar en el `Prototype` del constructor. Veamos un ejemplo con el constructo `Person` y la instancia `john` con la que hemos trabajado anteriormente.
 
-Al principio de la sesión vimos cómo funciona `map()`, aplica una función sobre cada elemento del arreglo. Es importante destacar que no muta el arreglo original.
+![Prototype Chain](./assets/prototype-chain.png)
 
-```javascript
-var numbers = [1, 2, 3, 4, 5];
-var doubles = numbers.map(function(number) {
-	return number * 2;
-});
+Como `john` es una instancia de `Person`, este tiene acceso al método `calculateAge()` aunque no se encuentre dentro del prototype de `john`. Cuando llamamos a un método, JavaScript busca primero en el prototype del objeto, si no lo encuentra busca en el prototype del constructor con el que fue instanciado, y así sucesivamente hasta llegar al constructor `Object`, del cuál se instancian todos los objetos en JavaScript y [contiene varios métodos](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object). A esto se le conoce como **prototype chain**.
 
-console.log(numbers); // [1, 2, 3, 4, 5]
-console.log(doubles); // [2, 4, 6, 8, 10]
-```
+#### [Ejemplo 3: Heredando métodos](./Ejemplo-03)
 
-De igual forma `filter()` crea un nuevo arreglo pero sólo con aquellos elementos que retornen true por la función que actúa como predicado.
-
-```JavaScript
-var numbers = [1, 2, 3, 4, 5];
-
-var evenNumbers = numbers.filter(function(number) {
-	return number % 2 === 0;
-});
-
-console.log(evenNumbers); // [2, 4]
-```
-
-Por último, `reduce()` acumula o reduce todos los elementos a un valor único según la función dada.
-
-```JavaScript
-var numbers = [1, 2, 3, 4, 5];
-
-var sum = numbers.reduce(function(accumulator, currentValue) {
-	return accumulator + currentValue;
-}, 0); // Initial value
-
-console.log(sum); // 15
-```
-
-#### [Ejemplo 3: Sumando Dígitos](./Ejemplo-03)
-
-#### [Reto 1: Flatten](./Reto-01)
-
-#### [Reto 2: Compact](./Reto-02)
-
-#### [Reto 3: Loop](./Reto-03)
+#### [Reto 3: Perímetro](./Reto-03)
