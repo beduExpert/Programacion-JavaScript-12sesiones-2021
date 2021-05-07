@@ -181,11 +181,11 @@ const john = {
   firstName: 'John',
   lastName: 'Doe',
   birthYear: 1990,
-  calculateAge: function(birthYear) {
+  calculateAge: function() {
     const today = new Date()
     const year = today.getFullYear()
     this.age = year - this.birthYear
-	}
+  }
 }
 ```
 
@@ -217,3 +217,23 @@ Después de llamar el método calculateAge()
 }
 */
 ```
+
+Una característica de los arrow functions que no mencionamos la sesión anterior es que no modifican el valor de `this`,
+en su lugar heredan o toman el valor de más arriba. 
+
+```javascript
+const john = {
+  firstName: 'John',
+  lastName: 'Doe',
+  birthYear: 1990,
+  calculateAge: () => {
+    const today = new Date()
+    const year = today.getFullYear()
+    this.age = year - this.birthYear
+  }
+}
+```
+
+Si reescribimos este ejemplo con arrow function no vamos a obtener el mismo resultado. En este caso `this` deja de
+apuntar al objeto `john` y toma el valor de más arriba, en este caso el objeto `window`. Esto implica que la
+propiedad `age` será agregada a `window` en lugar de `john`.
