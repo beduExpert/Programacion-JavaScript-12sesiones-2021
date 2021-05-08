@@ -231,3 +231,9 @@ Después de llamar el método calculateAge()
 ```
 
 #### [Ejemplo 3: Arrow function y this](./Ejemplo-03)
+
+#### [Reto 1: Extraer una lista de propiedades](./Reto-01)
+
+#### [Reto 2: Crear un número de teléfono](./Reto-02)
+
+#### [Reto 3: Encontrar elementos faltantes](./Reto-03)
