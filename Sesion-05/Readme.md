@@ -20,9 +20,19 @@ Diferenciar scope global de local y cómo this cambia dependiendo del execution 
 
 - **[Execution context](#execution-context)**
 
+  - [Ejemplo 2: Execution Context a detalle](./Ejemplo-02)
+
 - **[¿Cuál es el valor de `this`?](#cuál-es-el-valor-de-this)**
 
 - **[`this` como método](#this-como-método)**
+
+  - [Ejemplo 3: Arrow function y this](./Ejemplo-03)
+
+  - [Reto 1: Extraer una lista de propiedades](./Reto-01)
+  
+  - [Reto 2: Crear un número de teléfono](./Reto-02)
+  
+  - [Reto 3: Encontrar elementos faltantes](./Reto-03)
 
 ---
 
@@ -94,6 +104,8 @@ la pila y se procede a ejecutar el que sigue, así hasta terminar.
 
 Para evitar confusiones, el **scope se refiere a la visibilidad de variables** mientras que el **contexto se refiere al
 valor de `this`**. Es decir, conforme cambia el execution context también lo hace el objeto `this`.
+
+#### [Ejemplo 2: Execution Context a detalle](./Ejemplo-02)
 
 ---
 
@@ -218,22 +230,4 @@ Después de llamar el método calculateAge()
 */
 ```
 
-Una característica de los arrow functions que no mencionamos la sesión anterior es que no modifican el valor de `this`,
-en su lugar heredan o toman el valor de más arriba. 
-
-```javascript
-const john = {
-  firstName: 'John',
-  lastName: 'Doe',
-  birthYear: 1990,
-  calculateAge: () => {
-    const today = new Date()
-    const year = today.getFullYear()
-    this.age = year - this.birthYear
-  }
-}
-```
-
-Si reescribimos este ejemplo con arrow function no vamos a obtener el mismo resultado. En este caso `this` deja de
-apuntar al objeto `john` y toma el valor de más arriba, en este caso el objeto `window`. Esto implica que la
-propiedad `age` será agregada a `window` en lugar de `john`.
+#### [Ejemplo 3: Arrow function y this](./Ejemplo-03)
