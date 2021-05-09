@@ -1,4 +1,4 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 05`](../Readme.md) > `Ejemplo 01`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 06`](../Readme.md) > `Ejemplo 01`
 
 ---
 
@@ -13,34 +13,37 @@ Crear constructores para instanciar objetos y heredar métodos.
 En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.html`:
 
 ```html
-<html>
-  <head>
-    <script type="text/javascript" src="./ejemplos-sesion-5.js"></script>
-  </head>
+
+<html lang="es">
+<head>
+  <title>Ejemplo 3: Heredando métodos</title>
+  <script type="text/javascript" src="./ejemplo-3.js"></script>
+</head>
 </html>
 ```
 
-Dentro de la misma carpeta creamos un archivo `ejemplos-sesion-5.js` que es donde se trabajarán los ejemplos de esta sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
-
+Dentro de la misma carpeta creamos un archivo `ejemplo-3.js` que es donde se trabajarán los ejemplos de esta
+sesión. Finalmente abre el archivo `index.html` en Chrome e inspecciona la consola para ver los resultados.
 
 #### Desarrollo
 
 En el [Ejemplo 1](../Ejemplo-01) creamos el siguiente constructor:
 
 ```javascript
-var Person = function(name, birthYear, job) {
+const Person = function(name, birthYear, job) {
   this.name = name;
   this.birthYear = birthYear;
   this.job = job;
 }
 ```
 
-Vamos a agregar un método `calculateAge()` similar al que hicimos la sesión anterior, pero no lo vamos a poner en el constructor, en su lugar lo vamos a crear dentro del prototype.
+Vamos a agregar un método `calculateAge()` similar al que hicimos la sesión anterior, pero no lo vamos a poner en el
+constructor, en su lugar lo vamos a crear dentro del prototype.
 
 ```javascript
 Person.prototype.calculateAge = function() {
-  var today = new Date();
-  var year = today.getFullYear();
+  const today = new Date();
+  const year = today.getFullYear();
 
   console.log( year - this.birthYear );
 }
@@ -49,18 +52,18 @@ Person.prototype.calculateAge = function() {
 Ahora vamos a crear múltiples instancias de `Person`.
 
 ```javascript
-var john = new Person('John', 1990, 'Developer');
+const john = new Person('John', 1990, 'Developer');
 
-var mark = new Person('Mark', 1985, 'Teacher');
+const mark = new Person('Mark', 1985, 'Teacher');
 
-var jane = new Person('Jane', 1975, 'Designer');
+const jane = new Person('Jane', 1975, 'Designer');
 ```
 
-Si inspeccionamos en consola estos tres objetos nos damos cuenta que ninguno de ellos tiene el método `calculateAge()`.
+Si inspeccionamos en consola estos tres objetos nos damos cuenta de que ninguno de ellos tiene el método `calculateAge()`.
 
 ![Prototype](./assets/prototype.png)
 
-Aún así podemos llamar `calculateAge()` en los tres objetos.
+Aun así podemos llamar `calculateAge()` en los tres objetos.
 
 ```javascript
 john.calculateAge();
@@ -72,6 +75,8 @@ jane.calculateAge();
 
 ![Prototype](./assets/prototype-2.png)
 
-Si inspeccionamos más a detalle estos objetos podemos encontrar el método `calculateAge()` dentro de `__proto__` que es el prototype del objeto. Incluso nos muestra cuál es el contructor del que fue instanciado. De hecho, podemos inspeccionar todo el prototype chain.
+Si inspeccionamos más a detalle estos objetos podemos encontrar el método `calculateAge()` dentro de `__proto__` que es
+el prototype del objeto. Incluso nos muestra cuál es el contructor del que fue instanciado. De hecho, podemos
+inspeccionar todo el prototype chain.
 
 ![Prototype](./assets/prototype-3.png)

@@ -1,4 +1,4 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 04`](../Readme.md) > `Soluciones`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 05`](../Readme.md) > `Soluciones`
 
 ---
 
