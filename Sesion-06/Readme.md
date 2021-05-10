@@ -30,6 +30,8 @@ Crear constructores a partir de los cuales se puedan instanciar múltiples objet
 
 	- [Reto 3: Perímetro](./Reto-03)
 
+- **[ES6 Classes](#es6-classes)**
+
 ---
 
 ## Paradigma de programación
@@ -99,13 +101,13 @@ const john = {
   job: 'Developer'
 }
 
-var mark = {
+const mark = {
   name: 'Mark',
   birthYear: 1985,
   job: 'Teacher'
 }
 
-var jane = {
+const jane = {
   name: 'Jane',
   birthYear: 1975,
   job: 'Designer'
@@ -168,3 +170,90 @@ esto se le conoce como **prototype chain**.
 #### [Ejemplo 3: Heredando métodos](./Ejemplo-03)
 
 #### [Reto 3: Perímetro](./Reto-03)
+
+---
+
+## ES6 Classes
+
+Ahora que vimos cómo funciona el function constructor y prototype podemos ver otra característica de JavaScript agregada
+en ES6. Las clases en JavaScript solamente son Syntactic Sugar, es decir, funcionan exactamente igual que function
+constructor, lo que cambia es la sintaxis que hace más fácil su lectura y escritura.
+
+Veamos el código del ejemplo 3:
+
+```javascript
+const Person = function(name, birthYear, job) {
+  this.name = name;
+  this.birthYear = birthYear;
+  this.job = job;
+}
+```
+
+Este function constructor lo podemos reemplazar por una declaración de clase utilizando el keyword `class`.
+
+```javascript
+class Person {
+  
+}
+```
+
+Lo primero que se ejecuta en la clase es el método `constructor` al cual le debemos pasar los argumentos de la función.
+
+```javascript
+class Person {
+  constructor(name, birthYear, job) {
+    
+  }
+}
+```
+
+Y por último agregamos las asignaciones de variables.
+
+```javascript
+class Person {
+  constructor(name, birthYear, job) {
+    this.name = name;
+    this.birthYear = birthYear;
+    this.job = job;
+  }
+}
+```
+
+Ahora veamos el método que agregamos al `prototype` en el ejemplo 3.
+
+```javascript
+Person.prototype.calculateAge = function() {
+  const today = new Date();
+  const year = today.getFullYear();
+
+  console.log( year - this.birthYear );
+}
+```
+
+Cuando usamos clases estos métodos se colocan en el cuerpo de la clase.
+
+```javascript
+class Person {
+  constructor(name, birthYear, job) {
+    this.name = name;
+    this.birthYear = birthYear;
+    this.job = job;
+  }
+	
+  calculateAge() {
+    const today = new Date();
+    const year = today.getFullYear();
+    console.log( year - this.birthYear );
+  }
+}
+```
+
+Las instancias se crean de la misma forma que vimos anteriormente.
+
+```javascript
+const john = new Person('John', 1990, 'Developer');
+```
+
+> Function constructors no es código obsoleto, está bien si lo sigues usando. Las clases no reemplazan los function 
+> constructors, solo cambia la sintaxis para hacerlo más similar a otros lenguajes de programación como Java o C, pero 
+> detrás de escenas funciona exactamente igual que un function constructor.
