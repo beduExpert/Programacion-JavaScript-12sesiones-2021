@@ -1,4 +1,4 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 06`](../Readme.md) > `Reto 03`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Reto 03`
 
 ---
 
@@ -14,18 +14,24 @@ Haber terminado el [Reto 2](../Reto-02/Readme.md).
 
 #### Desarrollo
 
-Crear una función de alto orden `loop` que será similar a un `for`. Recibe `value`, una función `test`, una función `update` y una función `body`. En cada iteración se debe ejecutar la función `test` y terminar el ciclo si la función retorna `false`. Después se ejecuta la función `body` dándole como argumento el `value` actual. Por último se ejecuta la función `update` para crear un nuevo valor y se repite el proceso.
+Crear una función de alto orden `loop` que será similar a un `for`. 
+
+Recibe tres argumentos: `start`, una función `test`, una función `update` y una función `body`. 
+
+- El ciclo empieza en `start` y termina cuando `test` retorne `false`.
+- En cada iteración se ejecuta la función `body` dándole como argumento el valor actual de `start` actual. 
+- Al final de cada ciclo se ejecuta la función `update`.
 
 ```javascript
 function loop(start, test, update, body) {
-  ...
+  // Code goes here...
 }
 
-var test = function(n) {
+const test = function(n) {
   return n > 0;
 }
 
-var update = function(n) {
+const update = function(n) {
   return n - 1;
 }
 
@@ -34,16 +40,3 @@ loop(3, test, update, console.log);
 // 2
 // 1
 ```
-
-<details>
-  <summary>Solución</summary>
-
-```javascript
-function loop(start, test, update, body) {
-  for (var value = start; test(value); value = update(value)) {
-    body(value);
-  }
-}
-```
-
-</details>

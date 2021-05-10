@@ -14,28 +14,16 @@ Implementar funciones de alto orden para manipular arreglos.
 
 #### Desarrollo
 
-Crear una función `flatten` que recibe un arreglo de arreglos y retorna un nuevo arreglo con todos los elementos del arreglo original.
+Crear una función `flatten` que recibe un arreglo de arreglos y retorna un nuevo arreglo con todos los elementos del
+arreglo original.
 
 ```javascript
 function flatten(arrays) {
-  ...
+  // Code goes here...
 }
 
-var arrays = [[1, 2, 3], [4, 5], [6]];
-var array = flatten(arrays);
+const arrays = [[1, 2, 3], [4, 5], [6]];
+const array = flatten(arrays);
 
 console.log(array); // [1, 2, 3, 4, 5, 6]
 ```
-
-<details>
-  <summary>Solución</summary>
-
-```javascript
-function flatten(arrays) {
-  return arrays.reduce(function(flat, current) {
-    return flat.concat(current);
-  }, []);
-}
-```
-
-</details>

@@ -1,4 +1,4 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 06`](../Readme.md) > `Reto 02`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Reto 02`
 
 ---
 
@@ -18,24 +18,11 @@ Crear una función `compact` que recibe un arreglo y retorna un nuevo arreglo si
 
 ```javascript
 function compact(array) {
-  ...
+  // Code goes here...
 }
 
-var array = [0, 1, false, 2, '', 3];
-var compactedArray = compact(array);
+const array = [0, 1, false, 2, '', 3];
+const compactedArray = compact(array);
 
 console.log(compactedArray); // [1, 2, 3]
 ```
-
-<details>
-  <summary>Solución</summary>
-
-```javascript
-function compact(array) {
-  return array.filter(function(element) {
-    return !!element;
-  });
-}
-```
-
-</details>
