@@ -22,6 +22,9 @@ Instalar loaders
 npm install --save-dev css-loader style-loader
 ```
 
+- **css-loader:** le permite a webpack recolectar todos los estilos que encuentre y colocarlos en un string.
+- **style-loader:** inyecta los estilos generados por `css-loader` en el DOM.
+
 `webpack.config.js`
 
 ```javascript
