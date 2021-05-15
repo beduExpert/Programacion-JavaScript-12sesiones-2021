@@ -18,6 +18,14 @@
 - **[Webpack](#webpack)**
   
   - [Ejemplo 1: Instalación y configuración](./Ejemplo-01/Readme.md)
+  
+  - [Webpack DevServer](#webpack-devserver)
+    
+  - [Ejemplo 2: Webpack DevServer](./Ejemplo-02/Readme.md)
+  
+  - [Loaders](#loaders)
+    
+  - [Reto 1: Webpack y CSS](./Reto-01/Readme.md)
 
 - **[Babel](#babel)**
 
@@ -125,7 +133,7 @@ nuestro código.
 Webpack solamente entiende archivos de JavaScript y JSON. Usando _loaders_ webpack puede procesar otro tipo de archivos
 y convertirlos en módulos que serán agregados al grafo de dependencias.
 
-#### [Reto 1: Webpack y CSS](./Ejemplo-02/Readme.md)
+#### [Reto 1: Webpack y CSS](./Reto-01/Readme.md)
 
 ---
 
