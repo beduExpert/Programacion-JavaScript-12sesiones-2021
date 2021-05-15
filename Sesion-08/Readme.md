@@ -29,6 +29,10 @@
 
 - **[Babel](#babel)**
 
+  - [Ejemplo 3: Webpack y Babel](./Ejemplo-03/Readme.md)
+  
+  - [Reto 2: Assets en Webpack](./Reto-02/Readme.md)
+
 ---
 
 ## ¿Qué es ECMAScript 6?
@@ -160,3 +164,7 @@ código. Por ejemplo, el plugin `@babel/plugin-transform-arrow-functions` permit
 En lugar de agregar todos los plugins que queremos implementar uno por uno podemos usar _presets_. Estos son conjuntos
 ya preestablecidos de ciertos plugins. Por ejemplo, el preset `@babel/preset-env` contiene todos los plugins necesarios
 para soportar las versiones modernas de JavaScript.
+
+#### [Ejemplo 3: Webpack y Babel](./Ejemplo-03/Readme.md)
+
+#### [Reto 2: Assets en Webpack](./Reto-02/Readme.md)
