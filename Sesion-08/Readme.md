@@ -15,6 +15,12 @@
 
 - **[ES6 Modules](#es6-modules)**
 
+- **[Webpack](#webpack)**
+  
+  - [Ejemplo 1: Instalación y configuración](./Ejemplo-01/Readme.md)
+
+- **[Babel](#babel)**
+
 ---
 
 ## ¿Qué es ECMAScript 6?
@@ -97,6 +103,30 @@ _bundle_ contiene el código optimizado de todos los módulos y dependencias de 
 Webpack solamente es capaz de transpilar los módulos de ES6 `import` y `export`, por lo que si queremos usar cualquier
 otra característica de ES6+ es necesario usar un transpilador como Babel.
 
+#### [Ejemplo 1: Instalación y configuración](./Ejemplo-01/Readme.md)
+
+### Webpack DevServer
+
+Con la configuración del ejemplo 1 podemos generar un bundle optimizado para producción. Sin embargo, mientras estamos
+desarrollando nuestra aplicación resulta tedioso el proceso que debemos seguir cada que hagamos un cambio. 
+
+- Generar cambios.
+- Crear un nuevo bundle ejecutando `npm run build`.
+- Abrir la versión dentro de `dist` en el navegador para ver los cambios.
+
+Afortunadamente contamos con [webpack-dev-server](https://webpack.js.org/configuration/dev-server) que nos facilita el
+proceso de desarrollo, ya que nos genera un servidor local que genera un bundle cada vez que realicemos cambios a
+nuestro código.  
+
+#### [Ejemplo 2: Webpack DevServer](./Ejemplo-02/Readme.md)
+
+### Loaders
+
+Webpack solamente entiende archivos de JavaScript y JSON. Usando _loaders_ webpack puede procesar otro tipo de archivos
+y convertirlos en módulos que serán agregados al grafo de dependencias.
+
+#### [Reto 1: Webpack y CSS](./Ejemplo-02/Readme.md)
+
 ---
 
 ## Babel
@@ -116,7 +146,7 @@ navegadores y ambientes tanto actuales como anteriores.
 });
 ```
 
-Las transformaciones de código que se realizan a través de plugins. Cada plugin le dice a babel cómo transformar el
+Las transformaciones de código que se realizan a través de _plugins_. Cada plugin le dice a babel cómo transformar el
 código. Por ejemplo, el plugin `@babel/plugin-transform-arrow-functions` permite transformar arrow functions.
 
 En lugar de agregar todos los plugins que queremos implementar uno por uno podemos usar _presets_. Estos son conjuntos
