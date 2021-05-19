@@ -1,4 +1,4 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Ejemplo 03`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 09`](../Readme.md) > `Ejemplo 03`
 
 ---
 
@@ -35,14 +35,18 @@ Opcionalmente se puede manejar el código de JavaScript en un archivo independie
 
 #### Desarrollo
 
-Obtener un nuevo nodo normalmente consta de tres pasos, el primero es crear el nodo en sí con `document.createElement`, el segundo paso es crear otro nodo de texto con `document.createTextNode`, el último paso es agregar el texto como hijo del nodo creado en el primero paso.
+Obtener un nuevo nodo normalmente consta de tres pasos, el primero es crear el nodo en sí con `document.createElement`,
+el segundo paso es crear otro nodo de texto con `document.createTextNode`, el último paso es agregar el texto como hijo
+del nodo creado en el primero paso.
 
-En este ejemplo vamos a crear una función que se encargue de estos tres pasos, la función recibirá dos argumentos, el primero será el tipo de nodo que queremos, y el segundo el hijo. Usaremos esta función para agregar el autor de la frase que ya tenemos en nuestro documento.
+En este ejemplo vamos a crear una función que se encargue de estos tres pasos, la función recibirá dos argumentos, el
+primero será el tipo de nodo que queremos, y el segundo el hijo. Usaremos esta función para agregar el autor de la frase
+que ya tenemos en nuestro documento.
 
 ```javascript
 function createNode(type, child) {
-  var node = document.createElement(type);
-  var text = document.createTextNode(child);
+  const node = document.createElement(type);
+  const text = document.createTextNode(child);
 
   node.appendChild(text);
 
@@ -52,14 +56,15 @@ function createNode(type, child) {
 console.log(createNode('h1', 'Hello World')); // <h1>Hello World</h1>
 ```
 
-Hasta ahora está bien, pero podemos extender aún más la funcionalidad de esta función, el segundo parámetro no necesaiamente debe ser un string, también podría ser un nodo. De esta forma podríamos anidar nodos con la misma función.
+Hasta ahora está bien, pero podemos extender aún más la funcionalidad de esta función, el segundo parámetro no
+necesariamente debe ser un string, también podría ser un nodo. De esta forma podríamos anidar nodos con la misma función.
 
 ```javascript
 function createNode(type, child) {
-  var node = document.createElement(type);
+  const node = document.createElement(type);
 
   if(typeof child === "string") {
-    var text = document.createTextNode(child);
+    const text = document.createTextNode(child);
     node.appendChild(text);
   } else {
     node.appendChild(child);
@@ -76,7 +81,8 @@ console.log(createNode('h1', createNode('strong', 'Hello World')));
 **/
 ```
 
-Con esta función es ahora más fácil crear nodos con sus respectivos hijos. Ahora podemos seleccionar el nodo que contiene la frase célebre con su respectivo id y agregar el autor.
+Con esta función es ahora más fácil crear nodos con sus respectivos hijos. Ahora podemos seleccionar el nodo que
+contiene la frase célebre con su respectivo id y agregar el autor.
 
 ```javascript
 document.getElementById("quote")
@@ -84,6 +90,7 @@ document.getElementById("quote")
     createNode("footer", createNode("strong", "- Karl Popper"))
   )
 ```
-> Se puede escribir en una sola línea. Es buena práctica agregar los saltos de línea y la indentación para facilitar la lectura.
+> Se puede escribir en una sola línea. Es buena práctica agregar los saltos de línea y la indentación para facilitar la 
+> lectura.
 
 ![Create Nodes](./assets/create-nodes.png)

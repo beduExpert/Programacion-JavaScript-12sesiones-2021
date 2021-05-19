@@ -1,4 +1,4 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Reto 01`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 09`](../Readme.md) > `Reto 01`
 
 ---
 
@@ -35,19 +35,3 @@ Partir del siguiente documento HTML:
 #### Desarrollo
 
 Reemplazar todas las imágenes del documento (etiquetas `<img/>`) con el texto que contienen en el atributo `alt`.
-
-<details>
-  <summary>Solución</summary>
-
-```javascript
-var images = document.body.getElementsByTagName("img");
-for (var i = images.length - 1; i >= 0; i--) {
-  var image = images[i];
-  if (image.alt) {
-    var text = document.createTextNode(image.alt);
-    image.parentNode.replaceChild(text, image);
-  }
-}
-```
-
-</details>

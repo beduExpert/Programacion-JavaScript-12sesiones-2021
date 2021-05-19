@@ -1,4 +1,4 @@
-[`Programación con JavaScript`](../../Readme.md) > [`Sesión 07`](../Readme.md) > `Ejemplo 02`
+[`Programación con JavaScript`](../../Readme.md) > [`Sesión 09`](../Readme.md) > `Ejemplo 02`
 
 ---
 
@@ -29,14 +29,16 @@ En una nueva carpeta vamos a crear un archivo `HTML` en blanco llamado `index.ht
 </html>
 ```
 
-Opcionalmente se puede manejar el código de JavaScript en un archivo independiente como se ha trabajado en sesiones anteriores.
+Opcionalmente se puede manejar el código de JavaScript en un archivo independiente como se ha trabajado en sesiones
+anteriores.
 
 #### Desarrollo
 
-En este ejemplo vamos a ver cómo cambiar la estructura del DOM. Lo primero es seleccionar todas las etiquetas `p` del documento, esto lo podemos lograr con el método `getElementsByTagName`.
+En este ejemplo vamos a ver cómo cambiar la estructura del DOM. Lo primero es seleccionar todas las etiquetas `p` del
+documento, esto lo podemos lograr con el método `getElementsByTagName`.
 
 ```javascript
-var paragraphs = document.body.getElementsByTagName("p");
+const paragraphs = document.body.getElementsByTagName("p");
 
 console.log('Colección de nodos: ', paragraphs);
 
@@ -49,8 +51,12 @@ Podemos ver en consola que `paragraphs` representa una colección con las tres e
 
 ![Paragraphs](./assets/paragraphs.png)
 
-Vamos a cambiar el orden de estos nodos con el método `insertBefore`, el cual recibe dos argumentos, el primero es el nodo a insertar justo antes del nodo proporcionado como segundo argumento.
+Vamos a cambiar el orden de estos nodos con el método `insertBefore`, el cual recibe dos argumentos, el primero es el
+nodo a insertar justo antes del nodo proporcionado como segundo argumento.
 
 ![Nodes](./assets/nodes.png)
 
-Al abrir la página vemos que el órden de los párrafos cambia. Un nodo puede existir en el documento en un sólo lugar a la vez, por lo que al insertar `Three` antes de `One` primero se elimina del final de la lista para insertarse al principio. **Todas las operaciones que impliquen insertar nodos tienen como efecto secundario la eliminación del nodo en la posición actual** si es que ya existe en el DOM.
+Al abrir la página vemos que el orden de los párrafos cambia. Un nodo puede existir en el documento en un solo lugar a
+la vez, por lo que al insertar `Three` antes de `One` primero se elimina del final de la lista para insertarse al
+principio. **Todas las operaciones que impliquen insertar nodos tienen como efecto secundario la eliminación del nodo en
+la posición actual** si es que ya existe en el DOM.
